@@ -6,10 +6,10 @@ namespace parser.core.regex;
 public class RegexLog : RegexSettings
 {
 
-    private string text = "";
-
     private TypeLog _type;
     private Match? _match;
+
+    public readonly string msg ;
 
     public TypeLog type => _type;
 
@@ -17,70 +17,40 @@ public class RegexLog : RegexSettings
 
     public RegexData data;
 
-    public RegexLog(string msg, string time)
+    public RegexLog(string msg)
     {
 
-        text = msg;
+        this.msg = msg;
 
-        if (time == "")
-            GetTypeLogByNote();
-        else
-            GetTypeLogByGame();
+        GetTypeLogGame();
 
         data = new RegexData(match);
 
     }
 
-    private void GetTypeLogByNote()
+    private void GetTypeLogGame()
     {
 
-        _type = TypeLog.eLogNoteMessage;
+        _type = TypeLog.eLogUndefined;
 
-        if (MatchTypeLog(TypeLog.eLogNoteSession))
+        if (MatchTypeLog(TypeLog.eLogSession))
+            return;
+
+        if (MatchTypeLog(TypeLog.eLogPlayerDead))
             return;
 
     }
 
-    private void GetTypeLogByGame()
+    private bool MatchTypeLog(TypeLog type)
     {
 
-        _type = TypeLog.eLogMessage;
+        var match = Regex.Match(msg, getPattern(type));
 
-        if (MatchTypeLog(TypeLog.eLogPlayerHealedPower))
-            return;
-
-        if (MatchTypeLog(TypeLog.eLogPlayerLostPowerByUnknown))
-            return;
-
-        if (MatchTypeLog(TypeLog.eLogPlayerLostPowerByCreature))
-            return;
-
-        if (MatchTypeLog(TypeLog.eLogPlayerGainedExperience))
-            return;
-
-        if (MatchTypeLog(TypeLog.eLogPlayerLootedByCreature))
-            return;
-
-        if (MatchTypeLog(TypeLog.eLogCreatureHealedPower))
-            return;
-
-        if (MatchTypeLog(TypeLog.eLogCreatureLostPower))
-            return;
-
-    }
-
-    private bool MatchTypeLog(TypeLog item)
-    {
-
-        var pattern = getPattern(item);
-
-        var check = Regex.Match(text, pattern);
-
-        if (check.Success)
+        if (match.Success)
         {
-            _type = item;
+            _type = type;
 
-            _match = check;
+            _match = match;
 
             return true;
         }

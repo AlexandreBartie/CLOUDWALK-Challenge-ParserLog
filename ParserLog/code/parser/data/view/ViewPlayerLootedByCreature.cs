@@ -6,50 +6,50 @@ using parser.lib;
 
 namespace parser.data.view;
 
-public class ViewPlayerLootedByCreature : ViewModelGeneric
-{
-    public ViewPlayerLootedByCreature(ViewData view) : base(view, TypeLog.eLogPlayerLootedByCreature) { }
+// public class ViewPlayerLootedByCreature : ViewModelGeneric
+// {
+//     public ViewPlayerLootedByCreature(ViewData view) : base(view, TypeLog.eLogPlayerLootedByCreature) { }
 
-    public GroupLootList loot = new();
+//     public GroupLootList loot = new();
 
-    public override void GroupData()
-    {
-        foreach (RecordLog log in logs)
-        {
-            loot.AddList(log.dataPlayerLootedByCreature.list);
-        }
-    }
+//     public override void GroupData()
+//     {
+//         foreach (RecordLog log in logs)
+//         {
+//             loot.AddList(log.dataPlayerLootedByCreature.list);
+//         }
+//     }
 
-    public override string log(string label)
-    {
+//     public override string log(string label)
+//     {
 
-        var memo = new Memo();
+//         var memo = new Memo();
 
-        memo.add(view.GetLogItems(label, loot.total, count));
+//         memo.add(view.GetLogItems(label, loot.total, count));
 
-        memo.add(logList());
+//         memo.add(logList());
 
-        return memo.txt;
-    }
+//         return memo.txt;
+//     }
 
-    private string logList()
-    {
+//     private string logList()
+//     {
 
-        var memo = new Memo();
+//         var memo = new Memo();
 
-        foreach (LootItem item in loot.items.OrderBy(item => item.name))
-        {
-            var name = item.name;
+//         foreach (LootItem item in loot.items.OrderBy(item => item.name))
+//         {
+//             var name = item.name;
 
-            var list = loot.filter(name);
+//             var list = loot.filter(name);
 
-            var log = view.GetLogItems(name, list.total, list.count, 3);
+//             var log = view.GetLogItems(name, list.total, list.count, 3);
 
-            memo.Add(log);
-        }
+//             memo.Add(log);
+//         }
 
-        return memo.txt;
+//         return memo.txt;
 
-    }
+//     }
 
-}
+// }

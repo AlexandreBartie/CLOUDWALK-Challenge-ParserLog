@@ -2,21 +2,10 @@ using parser.data.group;
 
 namespace parser.core.log;
 
-public struct ILogPlayerPoints
+public struct ILogPlayerDead
 {
-    public int points;
-}
 
-public struct ILogPlayerLooted
-{
-    public string creature;
-    public GroupLootList list;
-
-}
-
-public struct ILogCreaturePoints
-{
-    public string creature;
-    public int points;
-
+    public string killer;
+    public string dead;
+    public string cause;
 }

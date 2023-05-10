@@ -16,11 +16,12 @@ public class BaseLog
 
     public BaseLog(string info)
     {
-        InfoLog tag = new(info);
+        RegexTime tag = new(info);
 
         this.msg = tag.msg;
         this.time = tag.time;
-        this.regex = new RegexLog(msg, time);
+
+        this.regex = new RegexLog(msg);
 
     }
 

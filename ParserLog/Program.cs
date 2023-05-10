@@ -53,7 +53,7 @@ class StartApp
     {
 
         // Set rules for spotlight creatures
-        parser.SetSpotlight(creatureRules);
+        // parser.SetSpotlight(creatureRules);
 
         // Set file will be opened file will be opened
         if (parser.LoadFile(fileName))

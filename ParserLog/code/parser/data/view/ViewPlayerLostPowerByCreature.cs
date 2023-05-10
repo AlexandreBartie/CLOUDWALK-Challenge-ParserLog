@@ -3,11 +3,11 @@ using parser.data.model;
 
 namespace parser.data.view;
 
-public class ViewPlayerLostPowerByCreature : ViewModelCreatureList
-{
+// public class ViewPlayerLostPowerByCreature : ViewModelCreatureList
+// {
 
-    public int totalDamage => group.total;
+//     public int totalDamage => group.total;
 
-    public ViewPlayerLostPowerByCreature(ViewData view) : base(view, TypeLog.eLogPlayerLostPowerByCreature) { }
+//     public ViewPlayerLostPowerByCreature(ViewData view) : base(view, TypeLog.eLogPlayerLostPowerByCreature) { }
 
-}
+// }

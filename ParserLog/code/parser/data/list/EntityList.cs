@@ -2,31 +2,36 @@ using parser.lib;
 
 namespace parser.data.list;
 
-public class CreatureList : List<Creature>
+public abstract class EntityList<T> : List<T> where T : Entity
 {
     public string txt => string.Join(", ", this.OrderBy(item => item.name));
 
-    public void AddList(CreatureList list)
+    public void AddList(List<T> list)
     {
-        foreach (Creature creature in list)
-            AddItem(creature.name);
+        foreach (T item in list)
+            AddItem(item.name);
 
     }
 
     public void AddItem(string name)
     {
-        if (name.Trim() == "")
+        if (string.IsNullOrWhiteSpace(name))
             return;
 
         if (!Found(name))
-            Add(new Creature(name));
+        {
+            T? item = Activator.CreateInstance(typeof(T), name) as T;
+
+            if (item != null)
+                Add(item);
+        }
 
     }
 
     public bool Found(string name)
     {
 
-        foreach (Creature item in this)
+        foreach (T item in this)
         {
             if (Text.IsMatch(item.name, name))
                 return true;
@@ -36,15 +41,15 @@ public class CreatureList : List<Creature>
 
     }
 
-    public CreatureList Match(string wildcard)
+    public List<T> Match(string wildcard)
     {
 
-        CreatureList list = new();
+        List<T> list = new();
 
-        foreach (Creature creature in this)
+        foreach (T item in this)
         {
-            if (creature.IsMatch(wildcard))
-                list.Add(creature);
+            if (item.IsMatch(wildcard))
+                list.Add(item);
         }
 
         return list;
@@ -56,7 +61,7 @@ public class CreatureList : List<Creature>
 
         var memo = new Memo();
 
-        foreach (Creature item in this)
+        foreach (T item in this)
             memo.Add(item.name);
 
         return memo.txt;
@@ -65,11 +70,11 @@ public class CreatureList : List<Creature>
 
 }
 
-public class Creature
+public abstract class Entity
 {
-    public readonly string name;
+    public readonly string name = "";
 
-    public Creature(string name)
+    public Entity(string name)
     { this.name = name; }
 
     public override string ToString() => name;
