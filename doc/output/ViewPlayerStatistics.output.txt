@@ -1,0 +1,19 @@
+============================================================
+                     Player Statistics                      
+------------------------------------------------------------
+  Experience                        28,462 points     129#
+  HealedPower                        8,048 points      27#
+  LostPower                          7,683 points     353#
+   -unknown                          2,137 points     203#
+   -byCreature                       5,546 points     150#
+     -Black Knight                     449 points       4#
+     -bonelord                         234 points       8#
+     -cyclops                          101 points       6#
+     -cyclops smith                     29 points       1#
+     -dragon                         2,427 points      44#
+     -dragon lord                    1,770 points      34#
+     -dwarf soldier                     17 points       3#
+     -ghoul                              2 points       1#
+     -scorpion                         470 points      45#
+     -wyvern                            47 points       4#
+------------------------------------------------------------

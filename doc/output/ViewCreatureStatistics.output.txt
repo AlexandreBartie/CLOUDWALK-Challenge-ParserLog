@@ -1,0 +1,28 @@
+============================================================
+                    Creature Statistics                     
+------------------------------------------------------------
+   -HealedPower                        405 points       6#
+     -dragon                           171 points       3#
+     -dragon lord                      234 points       3#
+   -LostPower                       39,407 points     205#
+     -bat                               60 points       2#
+     -Black Knight                   1,800 points       7#
+     -bonelord                       1,820 points       7#
+     -bug                               87 points       3#
+     -cyclops                        2,080 points       8#
+     -cyclops smith                    435 points       2#
+     -deer                              50 points       2#
+     -dragon                        21,821 points      68#
+     -dragon hatchling                 760 points       2#
+     -dragon lord                    4,034 points      15#
+     -dwarf                            540 points       6#
+     -dwarf soldier                    540 points       4#
+     -ghoul                            100 points       1#
+     -rat                               20 points       1#
+     -scorpion                       2,385 points      53#
+     -skeleton                         300 points       6#
+     -snake                             30 points       2#
+     -spider                            60 points       3#
+     -wolf                             100 points       4#
+     -wyvern                         2,385 points       9#
+------------------------------------------------------------

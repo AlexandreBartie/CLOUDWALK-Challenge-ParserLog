@@ -1,0 +1,33 @@
+============================================================
+                        Looted Items                        
+------------------------------------------------------------
+  LootedByCreature                   1,258 items      129#
+     -bolts                              7 items        2#
+     -bone                               1 items        1#
+     -burst arrows                       2 items        1#
+     -copper shield                      1 items        1#
+     -crossbow                           2 items        2#
+     -cyclops toe                        1 items        1#
+     -cyclops trophy                     1 items        1#
+     -dragon ham                        26 items       19#
+     -dragon's tail                      3 items        3#
+     -gold coins                     1,177 items       52#
+     -green dragon leather               1 items        1#
+     -ham                                1 items        1#
+     -hatchet                            2 items        2#
+     -leather legs                       1 items        1#
+     -letter                             1 items        1#
+     -longsword                          2 items        2#
+     -meat                               6 items        4#
+     -pick                               1 items        1#
+     -plate legs                         3 items        3#
+     -royal spear                        1 items        1#
+     -scorpion tail                      3 items        3#
+     -small diamond                      2 items        2#
+     -soldier helmet                     2 items        2#
+     -spellbook                          1 items        1#
+     -steel helmet                       2 items        2#
+     -steel shield                       4 items        4#
+     -strong health potion               1 items        1#
+     -two handed sword                   1 items        1#
+     -white mushrooms                    2 items        1#

@@ -1,0 +1,10 @@
+============================================================
+            Creature Spotlight: cyclop*, dragon*            
+------------------------------------------------------------
+  Creature Name     DamagePlayer    LostPower  HealedPower
+  cyclops                   101        2,080            0
+  cyclops smith              29          435            0
+  dragon                  2,427       21,821          171
+  dragon hatchling            0          760            0
+  dragon lord             1,770        4,034          234
+------------------------------------------------------------

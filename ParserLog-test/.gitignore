@@ -1,0 +1,24 @@
+# ignore NuGet packages
+*.nupkg
+
+# ignore build output
+bin/
+obj/
+
+# ignore Visual Studio files
+.vs/
+*.suo
+*.user
+*.ncrunch*
+*.psess
+
+# ignore ReSharper files
+*.resharper
+*.ReSharper
+
+# ignore logs and debugging files
+*.log
+*.vsix
+*.bak
+*.cache
+*.csproj.user
