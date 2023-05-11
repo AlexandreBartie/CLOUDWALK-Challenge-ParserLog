@@ -56,7 +56,7 @@ public class ViewFormat : ViewFormatSpotLight
         return GetLog(title, value, count, LABEL_POINTS, tab);
     }
 
-    public string GetLogItems(string item, int value, int count, int tab = 1)
+    public string GetLogList(string item, int value, int count, int tab = 1)
     {
         return GetLog(item, value, count, LABEL_ITEMS, tab);
     }

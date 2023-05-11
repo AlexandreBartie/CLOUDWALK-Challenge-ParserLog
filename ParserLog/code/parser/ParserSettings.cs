@@ -35,7 +35,7 @@ public class ParserSettingsData
             var fileFolder = "";
 
 #if DEBUG
-            fileFolder = "C:/DEVOPS/CHALLENGE/BLEU/Challenge-ParserLog/file/";
+            fileFolder = "C:/DEVOPS/CHALLENGE/CLOUDWALK/Challenge-ParserLog/file/";
 #else
             fileFolder = AppDomain.CurrentDomain.BaseDirectory;
 #endif

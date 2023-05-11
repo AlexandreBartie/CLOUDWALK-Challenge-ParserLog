@@ -1,4 +1,4 @@
-using parser.core.log;
+using parser.data.log;
 
 namespace parser.data.model;
 
@@ -6,9 +6,9 @@ public abstract class ViewModel
 {
     public readonly ViewData view;
 
-    public readonly TypeLog type;
+    public readonly LogType type;
 
-    public ViewModel(ViewData view, TypeLog type)
+    public ViewModel(ViewData view, LogType type)
     {
         this.view = view;
 

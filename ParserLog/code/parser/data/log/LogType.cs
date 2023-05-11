@@ -1,5 +1,5 @@
-namespace parser.core.log;
-public enum TypeLog
+namespace parser.data.log;
+public enum LogType
 {
 
     // XX:XX InitGame: \sv_floodProtect\1\sv_maxPing\0\sv_m ...
@@ -9,6 +9,9 @@ public enum TypeLog
     eLogSession = 0,
 
     // XX:XX Kill: 1022 2 22: <world> killed Isgalamido by MOD_TRIGGER_HURT
-    eLogPlayerDead = 10,
+    eLogWorldKillSomeone = 10,
+
+    // XX:XX Kill: 3 4 10: Isgalamido killed Zeh by MOD_RAILGUN
+    eLogPlayerKillSomeone = 11,
 
 }

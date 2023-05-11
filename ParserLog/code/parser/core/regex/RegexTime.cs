@@ -1,6 +1,6 @@
 using parser.lib;
 
-namespace parser.core.log;
+namespace parser.core.regex;
 
 public class RegexTime
 {

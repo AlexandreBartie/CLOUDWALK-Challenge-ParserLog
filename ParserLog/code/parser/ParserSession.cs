@@ -1,11 +1,11 @@
-using parser.core.log;
+using parser.data.log;
 
 namespace parser;
 
 public class ParserSession
 {
 
-    public RecordsLog logs = new();
+    public LogList logs = new();
 
 }
 
@@ -15,13 +15,13 @@ public class ParserSessions : List<ParserSession>
 
     private ParserSession? current;
 
-    public RecordsLog logs => getLogs();
+    public LogList logs => getLogs();
 
     public bool isNull => (logs.Count == 0);
 
     public void Populate(string[] lines)
     {
-        RecordLog log;
+        LogItem log;
 
         foreach (string line in lines)
         {
@@ -29,7 +29,7 @@ public class ParserSessions : List<ParserSession>
             if (line.Trim() != "")
             {
 
-                log = new RecordLog(line);
+                log = new LogItem(line);
 
                 if (log.isHeader)
                     addHeader();
@@ -50,15 +50,15 @@ public class ParserSessions : List<ParserSession>
         Add(current);
     }
 
-    private void addRecord(RecordLog record)
+    private void addRecord(LogItem record)
     {
         current?.logs.Add(record);
     }
 
-    private RecordsLog getLogs()
+    private LogList getLogs()
     {
 
-        var logs = new RecordsLog();
+        var logs = new LogList();
         foreach (ParserSession session in this)
         {
             logs.AddRange(session.logs);

@@ -1,9 +1,9 @@
 namespace parser.data.list;
 
-public class CauseDeathList : EntityList<CauseDeath> {}
+public class PlayerList : EntityList<Player> {}
 
-public class CauseDeath : Entity
+public class Player : Entity
 {
-    public CauseDeath(string name) : base(name) {}
+    public Player(string name) : base(name) {}
 }
 

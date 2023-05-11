@@ -1,25 +1,28 @@
 namespace parser.unit;
 
-public class UT03_PlayerViewTest
+public class UT03_PlayerKillSomeoneTest
 {
 
-    // private string input = "";
+    private string input = "";
 
-    // private ParserLog parser = new();
+    private ParserLog parser = new();
 
-    // [Theory]
-    // [InlineData(957, 5)]
-    // public void TST01_PlayerHealedPower(int damage, int qty)
-    // {
+    [Theory]
+    [InlineData("Isgalamido", 100, 100)]
+    [InlineData("Dono da Bola", 100, 100)]
+    [InlineData("Zeh", 100, 100)]
+    [InlineData("Assasinu Credi", 100, 100)]
+    public void TST01_PlayerKillSomeone_ByDead(string player, int kill, int dead)
+    {
 
-    //     input = "PlayerHealedPower.txt";
+        input = "PlayerKillSomeone.log";
 
-    //     parser.LoadFile(input);
+        parser.LoadFile(input);
 
-    //     Assert.Equal(damage, parser.PlayerHealedPower.totalHealed);
-    //     Assert.Equal(qty, parser.PlayerHealedPower.count);
+        Assert.Equal(kill, parser.PlayerKillSomeone.FilterByKiller(player).Count);
+        Assert.Equal(dead, parser.PlayerKillSomeone.FilterByDead(player).Count);
 
-    // }
+    }
 
     // [Theory]
     // [InlineData(12, 332, 12)]

@@ -9,7 +9,7 @@
                 "build",
                 "${workspaceFolder}/ParserLog/ParserLog.csproj",
                 "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
+                "/consoleLoggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -21,7 +21,7 @@
                 "publish",
                 "${workspaceFolder}/ParserLog/ParserLog.csproj",
                 "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
+                "/consoleLoggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },

@@ -1,47 +1,46 @@
 using System.Text.RegularExpressions;
-using parser.core.log;
+using parser.data.log;
 
 namespace parser.core.regex;
 
 public class RegexLog : RegexSettings
 {
 
-    private TypeLog _type;
+    private LogType _type;
     private Match? _match;
 
-    public readonly string msg ;
+    public readonly string msg;
 
-    public TypeLog type => _type;
+    public LogType type => _type;
 
     public Match? match => _match;
-
-    public RegexData data;
 
     public RegexLog(string msg)
     {
 
         this.msg = msg;
 
-        GetTypeLogGame();
-
-        data = new RegexData(match);
+        GetLogTypeGame();
 
     }
 
-    private void GetTypeLogGame()
+    private void GetLogTypeGame()
     {
 
-        _type = TypeLog.eLogUndefined;
+        _type = LogType.eLogUndefined;
 
-        if (MatchTypeLog(TypeLog.eLogSession))
+        if (MatchLogType(LogType.eLogSession))
             return;
 
-        if (MatchTypeLog(TypeLog.eLogPlayerDead))
+        if (MatchLogType(LogType.eLogWorldKillSomeone))
+            return;
+
+        if (MatchLogType(LogType.eLogPlayerKillSomeone))
             return;
 
     }
 
-    private bool MatchTypeLog(TypeLog type)
+    private bool MatchLogType(LogType type)
     {
 
         var match = Regex.Match(msg, getPattern(type));

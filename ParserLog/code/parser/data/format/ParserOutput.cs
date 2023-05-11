@@ -24,7 +24,7 @@ public class ViewOutput
             if (parser.show.PlayerStatistics)
             {
                 memo.add(parser.logTitle("Player Statistics"));
-                memo.add(parser.PlayerDead.log("Kills"));
+                // memo.add(parser.PlayerKillSomeone.log("Kills"));
 
             }
 
