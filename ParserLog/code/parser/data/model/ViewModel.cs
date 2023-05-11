@@ -1,6 +1,6 @@
-using parser.data.log;
+using parser.core.log;
 
-namespace parser.view.model;
+namespace parser.data.model;
 
 public abstract class ViewModel
 {

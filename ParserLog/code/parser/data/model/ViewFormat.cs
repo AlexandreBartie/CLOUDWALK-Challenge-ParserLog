@@ -1,6 +1,6 @@
 using lib;
 
-namespace parser.view.model;
+namespace parser.data.model;
 
 public class ViewFormat : ViewFormatSpotLight
 {

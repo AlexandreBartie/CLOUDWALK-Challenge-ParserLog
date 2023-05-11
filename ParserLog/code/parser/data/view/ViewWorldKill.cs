@@ -1,7 +1,7 @@
 using lib;
 using parser.data.list;
-using parser.data.log;
-using parser.view.model;
+using parser.core.log;
+using parser.data.model;
 
 namespace parser.data.view;
 
@@ -19,7 +19,7 @@ public class ViewWorldKillSomeone : ViewModel
 
         var list = new LogList();
 
-        foreach (LogItem log in logs)
+        foreach (LogRecord log in logs)
         {
             if (Text.IsMatch(player, log.worldKillSomeone.dead))
                 list.Add(log);
@@ -35,7 +35,7 @@ public class ViewWorldKillSomeone : ViewModel
 
         var list = new LogList();
 
-        foreach (LogItem log in logs)
+        foreach (LogRecord log in logs)
         {
             if (Text.IsMatch(cause, log.worldKillSomeone.cause))
                 list.Add(log);
@@ -51,7 +51,7 @@ public class ViewWorldKillSomeone : ViewModel
 
         var list = new PlayerList();
 
-        foreach (LogItem log in this.logs)
+        foreach (LogRecord log in this.logs)
             list.AddItem(log.worldKillSomeone.dead);
 
 
@@ -64,7 +64,7 @@ public class ViewWorldKillSomeone : ViewModel
 
         var list = new CauseDeathList();
 
-        foreach (LogItem log in this.logs)
+        foreach (LogRecord log in this.logs)
             list.AddItem(log.worldKillSomeone.cause);
 
         return list;

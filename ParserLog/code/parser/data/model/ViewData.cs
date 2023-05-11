@@ -1,7 +1,6 @@
-using parser.data.log;
-using parser.data.view;
+using parser.core.log;
 
-namespace parser.view.model;
+namespace parser.data.model;
 
 public class ViewData : ViewFormat
 {
@@ -11,7 +10,7 @@ public class ViewData : ViewFormat
     public readonly ViewWorldKillSomeone WorldKillSomeone;
     public readonly ViewPlayerKillSomeone PlayerKillSomeone;
 
-    public LogList logs => (sessions.logs);
+    public LogList all => (sessions.all);
 
     public bool isNull => (sessions.isNull);
 

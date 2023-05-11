@@ -1,4 +1,4 @@
-namespace parser.data.log;
+namespace parser.core.log;
 public enum LogType
 {
 

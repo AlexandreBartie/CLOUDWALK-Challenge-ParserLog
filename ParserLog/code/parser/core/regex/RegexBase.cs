@@ -1,4 +1,4 @@
-using parser.data.log;
+using parser.core.log;
 
 namespace parser.core.regex;
 

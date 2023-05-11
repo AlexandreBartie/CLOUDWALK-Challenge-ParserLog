@@ -1,8 +1,8 @@
 using parser.core.regex;
 
-namespace parser.data.log;
+namespace parser.core.log;
 
-public class LogItem : RegexBase
+public class LogRecord : RegexBase
 {
     public bool isHeader => (type == LogType.eLogSession);
 
@@ -10,7 +10,7 @@ public class LogItem : RegexBase
 
     public ILogPlayerKillSomeone playerKillSomeone => GetPlayerKillSomeone();
 
-    public LogItem(string info) : base(info) { }
+    public LogRecord(string info) : base(info) { }
 
     private ILogWorldKillSomeone GetWorldKillSomeone()
     {
@@ -39,7 +39,7 @@ public class LogItem : RegexBase
 
 }
 
-public class LogList : List<LogItem>
+public class LogList : List<LogRecord>
 {
 
     public LogList filter(LogType type)
@@ -47,7 +47,7 @@ public class LogList : List<LogItem>
 
         var logs = new LogList();
 
-        foreach (LogItem log in this)
+        foreach (LogRecord log in this)
         {
             if (log.type == type)
                 logs.Add(log);
