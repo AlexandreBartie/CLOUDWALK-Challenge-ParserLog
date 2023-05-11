@@ -1,8 +1,7 @@
-using parser.data.format;
-using parser.data.view;
 using parser.data.log;
+using parser.data.view;
 
-namespace parser.data.model;
+namespace parser.view.model;
 
 public class ViewData : ViewFormat
 {
@@ -31,10 +30,7 @@ public class ViewData : ViewFormat
 
     public void Populate(string[] lines)
     {
-
         sessions.Populate(lines);
-
-        // PlayerKilledSomeone.GroupData();
     }
 
 }

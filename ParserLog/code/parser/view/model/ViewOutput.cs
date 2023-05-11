@@ -1,6 +1,6 @@
 using parser.lib;
 
-namespace parser.data.format;
+namespace parser.view.model;
 
 public class ViewOutput
 {

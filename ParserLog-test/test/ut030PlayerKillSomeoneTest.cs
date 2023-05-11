@@ -1,3 +1,4 @@
+using parser.core;
 namespace parser.unit;
 
 public class UT030_PlayerKillSomeoneTest

@@ -1,5 +1,4 @@
-using parser.data.model;
-using parser.data.format;
+using parser.view.model;
 
 namespace parser;
 

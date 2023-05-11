@@ -1,6 +1,6 @@
 using parser.data.log;
 
-namespace parser.data.model;
+namespace parser.view.model;
 
 public abstract class ViewModel
 {

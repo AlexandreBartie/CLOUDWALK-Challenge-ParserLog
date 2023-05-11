@@ -1,6 +1,6 @@
 using parser.data.list;
 using parser.data.log;
-using parser.data.model;
+using parser.view.model;
 using parser.lib;
 
 namespace parser.data.view;
@@ -11,7 +11,7 @@ public class ViewWorldKillSomeone : ViewModel
     public CauseDeathList causes => GetCauseList();
 
     public int totalDeaths => logs.Count;
-    
+
     public ViewWorldKillSomeone(ViewData view) : base(view, LogType.eLogWorldKillSomeone) { }
 
     public LogList FilterByWhoDied(string player)

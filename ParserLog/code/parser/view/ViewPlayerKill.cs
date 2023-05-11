@@ -1,6 +1,6 @@
 using parser.data.list;
 using parser.data.log;
-using parser.data.model;
+using parser.view.model;
 using parser.lib;
 
 namespace parser.data.view;
@@ -84,7 +84,7 @@ public class ViewPlayerKillSomeone : ViewModel
         var list = new CauseDeathList();
 
         foreach (LogItem log in this.logs)
-            list.AddItem(log.worldKillSomeone.cause);
+            list.AddItem(log.playerKillSomeone.cause);
 
         return list;
 
