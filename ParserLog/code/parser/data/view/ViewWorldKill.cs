@@ -52,31 +52,24 @@ public class ViewWorldKillSomeone : ViewModel
         var list = new PlayerList();
 
         foreach (LogItem log in this.logs)
-        {
-            list.AddItem(log.playerKillSomeone.dead);
-        }
+            list.AddItem(log.worldKillSomeone.dead);
 
 
         return list;
 
     }
 
-    private PlayerList GetCauseList()
+    private CauseDeathList GetCauseList()
     {
 
-        var list = new PlayerList();
+        var list = new CauseDeathList();
 
         foreach (LogItem log in this.logs)
-        {
-            list.AddItem(log.playerKillSomeone.killer);
-            list.AddItem(log.playerKillSomeone.dead);
-        }
-
+            list.AddItem(log.worldKillSomeone.cause);
 
         return list;
 
     }
-
 
     public override string log(string label)
     {

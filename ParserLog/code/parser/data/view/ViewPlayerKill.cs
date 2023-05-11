@@ -10,6 +10,7 @@ public class ViewPlayerKillSomeone : ViewModel
     public ViewPlayerKillSomeone(ViewData view) : base(view, LogType.eLogPlayerKillSomeone) { }
 
     public PlayerList players => GetPlayers();
+    public CauseDeathList causes => GetCauseList();
 
     public int total => logs.Count;
 
@@ -72,6 +73,18 @@ public class ViewPlayerKillSomeone : ViewModel
             list.AddItem(log.playerKillSomeone.dead);
         }
 
+
+        return list;
+
+    }
+
+    private CauseDeathList GetCauseList()
+    {
+
+        var list = new CauseDeathList();
+
+        foreach (LogItem log in this.logs)
+            list.AddItem(log.worldKillSomeone.cause);
 
         return list;
 

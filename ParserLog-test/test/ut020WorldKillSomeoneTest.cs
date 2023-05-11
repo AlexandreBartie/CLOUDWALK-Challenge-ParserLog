@@ -1,9 +1,9 @@
 namespace parser.unit;
 
-public class UT02_WorldKillSomeoneTest
+public class UT020_WorldKillSomeoneTest
 {
 
-    private string input = "";
+    private string input = "ListWorldKillSomeone.log";
 
     private ParserLog parser = new();
 
@@ -12,14 +12,12 @@ public class UT02_WorldKillSomeoneTest
     [InlineData("Dono da Bola", 7)]
     [InlineData("Zeh", 2)]
     [InlineData("Assasinu Credi", 3)]
-    public void TST01_WorldKillSomeone_ByDead(string player, int count)
+    public void TST01_WorldKillSomeone_Filter(string player, int count)
     {
-
-        input = "ListWorldKillSomeone.log";
 
         parser.LoadFile(input);
 
-        Assert.Equal(count, parser.WorldKillSomeone.FilterByHowDied(player).Count);
+        Assert.Equal(count, parser.WorldKillSomeone.FilterByWhoDied(player).Count);
 
     }
 
@@ -27,8 +25,6 @@ public class UT02_WorldKillSomeoneTest
     [InlineData("Assasinu Credi, Dono da Bola, Isgalamido, Zeh")]
     public void TST02_WorldKillSomeone_PlayerList(string list)
     {
-
-        input = "ListWorldKillSomeone.log";
 
         parser.LoadFile(input);
 

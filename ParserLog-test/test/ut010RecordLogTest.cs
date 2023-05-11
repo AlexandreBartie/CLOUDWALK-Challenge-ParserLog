@@ -1,7 +1,7 @@
 using parser.data.log;
 namespace parser.unit;
 
-public class UT01_LogItemTest
+public class UT010_LogItemTest
 {
 
     private LogItem? log;
