@@ -1,3 +1,4 @@
+using parser.data.list;
 using parser.data.log;
 using parser.data.model;
 using parser.data.record;
@@ -9,19 +10,9 @@ public class ViewWorldKillSomeone : ViewModelGeneric
 {
     public ViewWorldKillSomeone(ViewData view) : base(view, LogType.eLogWorldKillSomeone) { }
 
+    public PlayerList players => GetPlayers();
+
     public int totalDeaths => logs.Count;
-
-    public override void GroupData()
-    {
-
-        // totalDeaths = 0;
-
-        // foreach (LogItem log in logs)
-        // {
-        //     if (log.dataPlayerKilledSomeone.killer)
-        //     totalDeaths++;
-        // }
-    }
 
     public LogList FilterByDead(string player)
     {
@@ -34,6 +25,18 @@ public class ViewWorldKillSomeone : ViewModelGeneric
                 list.Add(log);
 
         }
+
+        return list;
+
+    }
+
+    private PlayerList GetPlayers()
+    {
+
+        var list = new PlayerList();
+
+        foreach (LogItem log in this.logs)
+            list.AddItem(log.worldKillSomeone.dead);
 
         return list;
 

@@ -14,5 +14,3 @@ public class RecordWorldKillSomeone : ILogWorldKillSomeone
     }
 
 }
-
-public class RecordWorldKillSomeoneList : List<RecordWorldKillSomeone> { }

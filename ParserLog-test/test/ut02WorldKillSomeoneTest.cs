@@ -23,4 +23,17 @@ public class UT02_WorldKillSomeoneTest
 
     }
 
+    [Theory]
+    [InlineData("Assasinu Credi, Dono da Bola, Isgalamido, Zeh")]
+    public void TST02_WorldKillSomeone_PlayerList(string list)
+    {
+
+        input = "ListWorldKillSomeone.log";
+
+        parser.LoadFile(input);
+
+        Assert.Equal(list, parser.WorldKillSomeone.players.txt);
+
+    }
+
 }

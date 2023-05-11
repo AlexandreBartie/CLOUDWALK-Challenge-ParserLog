@@ -12,5 +12,3 @@ public class RecordPlayerKillSomeone : ILogPlayerKillSomeone
     }
 
 }
-
-public class RecordPlayerKillSomeoneList : List<RecordPlayerKillSomeone> { }

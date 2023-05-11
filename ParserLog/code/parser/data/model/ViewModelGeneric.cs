@@ -10,8 +10,6 @@ public abstract class ViewModelGeneric : ViewModel
 
     public ViewModelGeneric(ViewData view, LogType type) : base(view, type) { }
 
-    public abstract void GroupData();
-
     public abstract string log(string label);
 
 }
