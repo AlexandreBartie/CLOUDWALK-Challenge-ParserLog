@@ -30,7 +30,7 @@ public class ViewWorldKillSomeone : ViewModelGeneric
 
         foreach (LogItem log in this.logs)
         {
-            if (Text.IsMatch(player, log.playerKillSomeone.dead))
+            if (Text.IsMatch(player, log.worldKillSomeone.dead))
                 list.Add(log);
 
         }

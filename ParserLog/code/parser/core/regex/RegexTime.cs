@@ -14,7 +14,8 @@ public class RegexTime
 
     public RegexTime(string info)
     {
-        var log = new TextMatch(info, REGEX_TIME);
+        
+        var log = new TextMatch(info.Trim(), REGEX_TIME);
 
         time = log.IsMatch ? log.GetParameter(1) : "";
         msg = log.IsMatch ? log.GetParameter(2) : info;

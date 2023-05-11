@@ -8,10 +8,10 @@ public class UT02_WorldKillSomeoneTest
     private ParserLog parser = new();
 
     [Theory]
-    [InlineData("Isgalamido", 0)]
-    [InlineData("Dono da Bola", 0)]
-    [InlineData("Zeh", 0)]
-    [InlineData("Assasinu Credi", 0)]
+    [InlineData("Isgalamido", 8)]
+    [InlineData("Dono da Bola", 7)]
+    [InlineData("Zeh", 2)]
+    [InlineData("Assasinu Credi", 3)]
     public void TST01_WorldKillSomeone_ByDead(string player, int count)
     {
 
@@ -19,7 +19,7 @@ public class UT02_WorldKillSomeoneTest
 
         parser.LoadFile(input);
 
-        Assert.Equal(count, parser.WorldKillSomeone.count); // .FilterByDead(player).Count);
+        Assert.Equal(count, parser.WorldKillSomeone.FilterByDead(player).Count);
 
     }
 

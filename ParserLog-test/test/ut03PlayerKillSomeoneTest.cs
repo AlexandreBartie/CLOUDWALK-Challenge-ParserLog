@@ -8,14 +8,31 @@ public class UT03_PlayerKillSomeoneTest
     private ParserLog parser = new();
 
     [Theory]
-    [InlineData("Isgalamido", 0, 0)]
-    [InlineData("Dono da Bola", 0, 0)]
-    [InlineData("Zeh", 0, 0)]
-    [InlineData("Assasinu Credi", 0, 0)]
-    public void TST01_PlayerKillSomeone_ByDead(string player, int kill, int dead)
+    [InlineData("Isgalamido", 8, 3)]
+    [InlineData("Dono da Bola", 3, 6)]
+    [InlineData("Zeh", 7, 6)]
+    [InlineData("Assasinu Credi", 1, 4)]
+    public void TST01_PlayerKillSomeone_Reduced(string player, int kill, int dead)
     {
 
-        input = "ListPlayerKillSomeone.log";
+        input = "ListPlayerKillSomeone-Reduced.log";
+
+        parser.LoadFile(input);
+
+        Assert.Equal(kill, parser.PlayerKillSomeone.FilterByKiller(player).Count);
+        Assert.Equal(dead, parser.PlayerKillSomeone.FilterByDead(player).Count);
+
+    }
+
+    [Theory]
+    [InlineData("Isgalamido", 27, 15)]
+    [InlineData("Dono da Bola", 20, 24)]
+    [InlineData("Zeh", 22, 25)]
+    [InlineData("Assasinu Credi", 16, 21)]
+    public void TST02_PlayerKillSomeone_Full(string player, int kill, int dead)
+    {
+
+        input = "ListPlayerKillSomeone-Full.log";
 
         parser.LoadFile(input);
 

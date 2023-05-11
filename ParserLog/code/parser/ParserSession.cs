@@ -60,9 +60,7 @@ public class ParserSessions : List<ParserSession>
 
         var logs = new LogList();
         foreach (ParserSession session in this)
-        {
             logs.AddRange(session.logs);
-        }
 
         return logs;
 
