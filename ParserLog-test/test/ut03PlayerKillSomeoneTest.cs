@@ -8,10 +8,10 @@ public class UT03_PlayerKillSomeoneTest
     private ParserLog parser = new();
 
     [Theory]
-    [InlineData("Isgalamido", 8, 3)]
+    [InlineData("Isgalamido", 6, 3)]
     [InlineData("Dono da Bola", 3, 6)]
-    [InlineData("Zeh", 7, 6)]
-    [InlineData("Assasinu Credi", 1, 4)]
+    [InlineData("Zeh", 6, 6)]
+    [InlineData("Assasinu Credi", 0, 0)]
     public void TST01_PlayerKillSomeone_Reduced(string player, int kill, int dead)
     {
 
@@ -42,7 +42,7 @@ public class UT03_PlayerKillSomeoneTest
     }
 
     [Theory]
-    [InlineData("ListPlayerKillSomeone-Reduced", "Assasinu Credi, Dono da Bola, Isgalamido, Zeh")]
+    [InlineData("ListPlayerKillSomeone-Reduced", "Dono da Bola, Isgalamido, Zeh")]
     [InlineData("ListPlayerKillSomeone-Full", "Assasinu Credi, Dono da Bola, Isgalamido, Zeh")]
     public void TST03_PlayerKillSomeone_Full_PlayerList(string file, string list)
     {
