@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace parser.lib;
+namespace lib;
 
 public class TextMatch
 {

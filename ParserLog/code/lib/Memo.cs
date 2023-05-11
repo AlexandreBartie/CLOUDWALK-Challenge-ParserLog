@@ -1,4 +1,4 @@
-namespace parser.lib;
+namespace lib;
 
 public class Memo : List<string>
 {

@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace parser.lib;
+namespace lib;
 
 public static class Text
 {

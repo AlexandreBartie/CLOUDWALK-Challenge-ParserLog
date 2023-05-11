@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace parser.lib;
+namespace lib;
 
 public class FileTXT
 {

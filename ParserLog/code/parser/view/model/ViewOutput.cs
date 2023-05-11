@@ -1,4 +1,4 @@
-using parser.lib;
+using lib;
 
 namespace parser.view.model;
 
