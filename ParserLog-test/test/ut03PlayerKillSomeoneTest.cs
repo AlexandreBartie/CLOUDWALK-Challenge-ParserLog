@@ -8,14 +8,14 @@ public class UT03_PlayerKillSomeoneTest
     private ParserLog parser = new();
 
     [Theory]
-    [InlineData("Isgalamido", 100, 100)]
-    [InlineData("Dono da Bola", 100, 100)]
-    [InlineData("Zeh", 100, 100)]
-    [InlineData("Assasinu Credi", 100, 100)]
+    [InlineData("Isgalamido", 0, 0)]
+    [InlineData("Dono da Bola", 0, 0)]
+    [InlineData("Zeh", 0, 0)]
+    [InlineData("Assasinu Credi", 0, 0)]
     public void TST01_PlayerKillSomeone_ByDead(string player, int kill, int dead)
     {
 
-        input = "PlayerKillSomeone.log";
+        input = "ListPlayerKillSomeone.log";
 
         parser.LoadFile(input);
 
