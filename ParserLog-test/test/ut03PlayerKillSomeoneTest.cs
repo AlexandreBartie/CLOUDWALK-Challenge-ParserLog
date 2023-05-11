@@ -19,8 +19,8 @@ public class UT03_PlayerKillSomeoneTest
 
         parser.LoadFile(input);
 
-        Assert.Equal(kill, parser.PlayerKillSomeone.FilterByKiller(player).Count);
-        Assert.Equal(dead, parser.PlayerKillSomeone.FilterByDead(player).Count);
+        Assert.Equal(kill, parser.PlayerKillSomeone.FilterByWhoKill(player).Count);
+        Assert.Equal(dead, parser.PlayerKillSomeone.FilterByWhoDied(player).Count);
 
     }
 
@@ -36,8 +36,8 @@ public class UT03_PlayerKillSomeoneTest
 
         parser.LoadFile(input);
 
-        Assert.Equal(kill, parser.PlayerKillSomeone.FilterByKiller(player).Count);
-        Assert.Equal(dead, parser.PlayerKillSomeone.FilterByDead(player).Count);
+        Assert.Equal(kill, parser.PlayerKillSomeone.FilterByWhoKill(player).Count);
+        Assert.Equal(dead, parser.PlayerKillSomeone.FilterByWhoDied(player).Count);
 
     }
 

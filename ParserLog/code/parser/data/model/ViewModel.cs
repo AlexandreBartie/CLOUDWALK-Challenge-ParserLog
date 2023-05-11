@@ -4,6 +4,10 @@ namespace parser.data.model;
 
 public abstract class ViewModel
 {
+    public LogList logs => view.logs.filter(type);
+
+    public int count => logs.Count;
+
     public readonly ViewData view;
 
     public readonly LogType type;
@@ -14,5 +18,7 @@ public abstract class ViewModel
 
         this.type = type;
     }
+
+    public abstract string log(string label);
 
 }

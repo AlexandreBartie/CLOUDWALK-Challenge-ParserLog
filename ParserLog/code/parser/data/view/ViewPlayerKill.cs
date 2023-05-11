@@ -5,7 +5,7 @@ using parser.lib;
 
 namespace parser.data.view;
 
-public class ViewPlayerKillSomeone : ViewModelGeneric
+public class ViewPlayerKillSomeone : ViewModel
 {
     public ViewPlayerKillSomeone(ViewData view) : base(view, LogType.eLogPlayerKillSomeone) { }
 
@@ -13,7 +13,7 @@ public class ViewPlayerKillSomeone : ViewModelGeneric
 
     public int total => logs.Count;
 
-    public LogList FilterByKiller(string player)
+    public LogList FilterByWhoKill(string player)
     {
 
         var list = new LogList();
@@ -29,7 +29,7 @@ public class ViewPlayerKillSomeone : ViewModelGeneric
 
     }
 
-    public LogList FilterByDead(string player)
+    public LogList FilterByWhoDied(string player)
     {
 
         var list = new LogList();
@@ -37,6 +37,22 @@ public class ViewPlayerKillSomeone : ViewModelGeneric
         foreach (LogItem log in logs)
         {
             if (Text.IsMatch(player, log.playerKillSomeone.dead))
+                list.Add(log);
+
+        }
+
+        return list;
+
+    }
+
+    public LogList FilterByHowDied(string cause)
+    {
+
+        var list = new LogList();
+
+        foreach (LogItem log in logs)
+        {
+            if (Text.IsMatch(cause, log.playerKillSomeone.cause))
                 list.Add(log);
 
         }
