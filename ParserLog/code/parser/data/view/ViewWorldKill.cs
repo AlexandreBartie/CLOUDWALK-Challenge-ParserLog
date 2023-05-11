@@ -1,7 +1,6 @@
 using parser.data.list;
 using parser.data.log;
 using parser.data.model;
-using parser.data.record;
 using parser.lib;
 
 namespace parser.data.view;

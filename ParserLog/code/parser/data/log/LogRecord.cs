@@ -1,5 +1,4 @@
 using parser.core.regex;
-using parser.data.record;
 
 namespace parser.data.log;
 
@@ -7,34 +6,34 @@ public class LogItem : RegexBase
 {
     public bool isHeader => (type == LogType.eLogSession);
 
-    public RecordWorldKillSomeone worldKillSomeone => GetWorldKillSomeone();
+    public ILogWorldKillSomeone worldKillSomeone => GetWorldKillSomeone();
 
-    public RecordPlayerKillSomeone playerKillSomeone => GetPlayerKillSomeone();
+    public ILogPlayerKillSomeone playerKillSomeone => GetPlayerKillSomeone();
 
     public LogItem(string info) : base(info) { }
 
-    private RecordWorldKillSomeone GetWorldKillSomeone()
+    private ILogWorldKillSomeone GetWorldKillSomeone()
     {
 
-        var record = new RecordWorldKillSomeone(this);
+        var ILog = new ILogWorldKillSomeone(this);
 
-        record.dead = GetParameter(2);
-        record.cause = GetParameter(3);
+        ILog.dead = GetParameter(2);
+        ILog.cause = GetParameter(3);
 
-        return record;
+        return ILog;
 
     }
 
-    private RecordPlayerKillSomeone GetPlayerKillSomeone()
+    private ILogPlayerKillSomeone GetPlayerKillSomeone()
     {
 
-        var record = new RecordPlayerKillSomeone(this);
+        var ILog = new ILogPlayerKillSomeone(this);
 
-        record.killer = GetParameter(2);
-        record.dead = GetParameter(3);
-        record.cause = GetParameter(4);
+        ILog.killer = GetParameter(2);
+        ILog.dead = GetParameter(3);
+        ILog.cause = GetParameter(4);
 
-        return record;
+        return ILog;
 
     }
 
