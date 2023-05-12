@@ -1,11 +1,11 @@
 using parser.core.log;
+using parser.data.model;
 
 namespace parser;
 
-public class ParserSession
+public class ParserSession : ViewData
 {
-
-    public LogList logs = new();
+    public ParserSession() : base(new LogList()) {}
 
 }
 
@@ -13,7 +13,7 @@ public class ParserSession
 public class ParserSessions : List<ParserSession>
 {
 
-    private ParserSession? current;
+    public ParserSession current = new();
 
     public LogList all => getAll();
 
@@ -38,13 +38,13 @@ public class ParserSessions : List<ParserSession>
 
             }
 
-
         }
 
     }
 
     private void addHeader()
     {
+
         current = new ParserSession();
 
         Add(current);
@@ -52,7 +52,7 @@ public class ParserSessions : List<ParserSession>
 
     private void addRecord(LogRecord record)
     {
-        current?.logs.Add(record);
+        current.logs.Add(record);
     }
 
     private LogList getAll()

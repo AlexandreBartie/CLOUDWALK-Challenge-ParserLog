@@ -19,7 +19,7 @@ public class ParserImport
 
         if (file.Open(path, name))
         {
-            parser.sessions.Populate(file.lines);
+            parser.LoadLines(file.lines);
 
             return true;
         }

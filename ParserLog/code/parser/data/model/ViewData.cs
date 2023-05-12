@@ -5,7 +5,6 @@ namespace parser.data.model;
 
 public class ViewData : ViewFormat
 {
-
     public readonly ViewWorldKillSomeone WorldKillSomeone;
     public readonly ViewPlayerKillSomeone PlayerKillSomeone;
 

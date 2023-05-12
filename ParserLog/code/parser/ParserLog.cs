@@ -10,8 +10,9 @@ public class ParserLog
     private ParserImport import;
     private ViewOutput output;
 
-    private ParserSessions sessions;
+    protected ParserSessions sessions;
 
+    public ParserSession session => sessions.current;
     public ParserShow show => settings.show;
     public string txt => output.txt;
 
@@ -27,6 +28,15 @@ public class ParserLog
     {
         return import.Load(settings.GetInputFileFolder(path), name);
     }
+
+    public void LoadLines(string[] lines)
+    {
+        sessions.Populate(lines);;
+    }
+
+
+
+
 
 }
 

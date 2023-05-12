@@ -14,7 +14,7 @@ public class UT041_CauseDeathWhenWorkKillTest
         
         parser.LoadFile(input);
 
-        Assert.Equal(list, parser.WorldKillSomeone.causes.txt);
+        Assert.Equal(list, parser.session.WorldKillSomeone.causes.txt);
 
     }
 
@@ -27,7 +27,7 @@ public class UT041_CauseDeathWhenWorkKillTest
 
         parser.LoadFile(input);
 
-        Assert.Equal(count, parser.WorldKillSomeone.FilterByHowDied(cause).Count);
+        Assert.Equal(count, parser.session.WorldKillSomeone.FilterByHowDied(cause).Count);
 
     }
 

@@ -14,7 +14,7 @@ public class UT042_CauseDeathWhenPlayerKillTest
        
         parser.LoadFile(input);
 
-        Assert.Equal(list, parser.PlayerKillSomeone.causes.txt);
+        Assert.Equal(list, parser.session.PlayerKillSomeone.causes.txt);
 
     }
 
@@ -28,7 +28,7 @@ public class UT042_CauseDeathWhenPlayerKillTest
 
         parser.LoadFile(input);
 
-        Assert.Equal(count, parser.PlayerKillSomeone.FilterByHowDied(cause).Count);
+        Assert.Equal(count, parser.session.PlayerKillSomeone.FilterByHowDied(cause).Count);
 
     }
 
