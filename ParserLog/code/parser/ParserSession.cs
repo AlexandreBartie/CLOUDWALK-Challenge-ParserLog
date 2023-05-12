@@ -5,7 +5,12 @@ namespace parser;
 
 public class ParserSession : ViewData
 {
+    public string tag = "";
+
     public ParserSession() : base(new LogList()) {}
+
+    public void SetTag(int order)
+    { tag = string.Format("Game#${0}", order); }
 
 }
 
@@ -26,13 +31,13 @@ public class ParserSessions : List<ParserSession>
         foreach (string line in lines)
         {
 
-            if (line.Trim() != "")
+            if (string.IsNullOrWhiteSpace(line))
             {
 
                 log = new LogRecord(line);
 
                 if (log.isHeader)
-                    addHeader();
+                    addSession();
 
                 addRecord(log);
 
@@ -42,12 +47,14 @@ public class ParserSessions : List<ParserSession>
 
     }
 
-    private void addHeader()
+    private void addSession()
     {
+        Add(new ParserSession());
 
-        current = new ParserSession();
+        current = this.Last();
+        
+        current.SetTag(Count);
 
-        Add(current);
     }
 
     private void addRecord(LogRecord record)
@@ -59,6 +66,7 @@ public class ParserSessions : List<ParserSession>
     {
 
         var logs = new LogList();
+
         foreach (ParserSession session in this)
             logs.AddRange(session.logs);
 

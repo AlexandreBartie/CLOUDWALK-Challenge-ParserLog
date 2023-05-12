@@ -41,6 +41,7 @@ public class LogRecord : RegexBase
 
 public class LogList : List<LogRecord>
 {
+    public int count => this.Count; 
 
     public LogList filter(LogType type)
     {

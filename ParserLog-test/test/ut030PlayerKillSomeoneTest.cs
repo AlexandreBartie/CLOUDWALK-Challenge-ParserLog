@@ -17,8 +17,8 @@ public class UT030_PlayerKillSomeoneTest
 
         parser.LoadFile(input);
 
-        Assert.Equal(kill, parser.session.PlayerKillSomeone.FilterByWhoKill(player).Count);
-        Assert.Equal(dead, parser.session.PlayerKillSomeone.FilterByWhoDied(player).Count);
+        Assert.Equal(kill, parser.session.PlayerKillSomeone.FilterByWhoKill(player).count);
+        Assert.Equal(dead, parser.session.PlayerKillSomeone.FilterByWhoDied(player).count);
 
     }
 

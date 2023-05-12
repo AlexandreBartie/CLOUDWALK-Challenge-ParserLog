@@ -17,7 +17,7 @@ public class UT020_WorldKillSomeoneTest
 
         parser.LoadFile(input);
 
-        Assert.Equal(count, parser.session.WorldKillSomeone.FilterByWhoDied(player).Count);
+        Assert.Equal(count, parser.session.WorldKillSomeone.FilterByWhoDied(player).count);
 
     }
 

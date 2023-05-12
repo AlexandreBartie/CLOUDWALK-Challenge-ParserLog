@@ -9,6 +9,8 @@ public class ViewOutput
 
     private ParserSession session => parser.session;
 
+    private ParserShow show => parser.show;
+
     public string txt => getTXT();
 
     public ViewOutput(ParserLog parser)
@@ -22,7 +24,7 @@ public class ViewOutput
 
         if (parser.show.PlayerStatistics)
         {
-            memo.add(parser.session.logTitle("Player Statistics"));
+            memo.add(session.logTitle("Player Statistics"));
             // memo.add(parser.PlayerKillSomeone.log("Kills"));
 
         }
