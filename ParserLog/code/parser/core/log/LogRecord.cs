@@ -6,16 +6,16 @@ public class LogRecord : RegexBase
 {
     public bool isHeader => (type == LogType.eLogSession);
 
-    public ILogWorldKillSomeone worldKillSomeone => GetWorldKillSomeone();
+    public ILogWorldKill worldKill => GetWorldKill();
 
-    public ILogPlayerKillSomeone playerKillSomeone => GetPlayerKillSomeone();
+    public ILogPlayerKill playerKill => GetPlayerKill();
 
     public LogRecord(string info) : base(info) { }
 
-    private ILogWorldKillSomeone GetWorldKillSomeone()
+    private ILogWorldKill GetWorldKill()
     {
 
-        var ILog = new ILogWorldKillSomeone(this);
+        var ILog = new ILogWorldKill(this);
 
         ILog.dead = GetParameter(2);
         ILog.cause = GetParameter(3);
@@ -24,10 +24,10 @@ public class LogRecord : RegexBase
 
     }
 
-    private ILogPlayerKillSomeone GetPlayerKillSomeone()
+    private ILogPlayerKill GetPlayerKill()
     {
 
-        var ILog = new ILogPlayerKillSomeone(this);
+        var ILog = new ILogPlayerKill(this);
 
         ILog.killer = GetParameter(2);
         ILog.dead = GetParameter(3);
@@ -41,7 +41,7 @@ public class LogRecord : RegexBase
 
 public class LogList : List<LogRecord>
 {
-    public int count => this.Count; 
+    public int count => this.Count;
 
     public LogList filter(LogType type)
     {

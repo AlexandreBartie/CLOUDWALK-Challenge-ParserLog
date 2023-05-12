@@ -1,22 +1,22 @@
 namespace parser.core.log;
 
-public class ILogKillSomeone : ILogModel
+public class ILogKill : ILogModel
 {
     public string dead = "";
     public string cause = "";
 
-    public ILogKillSomeone(LogRecord log) : base(log) { }
+    public ILogKill(LogRecord log) : base(log) { }
 
 }
 
-public class ILogWorldKillSomeone : ILogKillSomeone
+public class ILogWorldKill : ILogKill
 {
-    public ILogWorldKillSomeone(LogRecord log) : base(log) { }
+    public ILogWorldKill(LogRecord log) : base(log) { }
 }
 
-public class ILogPlayerKillSomeone : ILogKillSomeone
+public class ILogPlayerKill : ILogKill
 {
 
     public string killer = "";
-    public ILogPlayerKillSomeone(LogRecord log) : base(log) { }
+    public ILogPlayerKill(LogRecord log) : base(log) { }
 }

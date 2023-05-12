@@ -5,14 +5,14 @@ using parser.data.model;
 
 namespace parser.data.view;
 
-public class ViewWorldKillSomeone : ViewModel
+public class ViewWorldKill : ViewModel
 {
     public ListPlayer players => GetListPlayer();
-    public ListCauseDeath causes => GetCauseList();
+    public ListCauseDeath causes => GetListCause();
 
     public int totalDeaths => logs.Count;
 
-    public ViewWorldKillSomeone(ViewData view) : base(view, LogType.eLogWorldKillSomeone) { }
+    public ViewWorldKill(ViewData view) : base(view, LogType.eLogWorldKill) { }
 
     public LogList FilterByWhoDied(string player)
     {
@@ -21,7 +21,7 @@ public class ViewWorldKillSomeone : ViewModel
 
         foreach (LogRecord log in logs)
         {
-            if (Text.IsMatch(player, log.worldKillSomeone.dead))
+            if (Text.IsMatch(player, log.worldKill.dead))
                 list.Add(log);
 
         }
@@ -37,7 +37,7 @@ public class ViewWorldKillSomeone : ViewModel
 
         foreach (LogRecord log in logs)
         {
-            if (Text.IsMatch(cause, log.worldKillSomeone.cause))
+            if (Text.IsMatch(cause, log.worldKill.cause))
                 list.Add(log);
 
         }
@@ -52,20 +52,20 @@ public class ViewWorldKillSomeone : ViewModel
         var list = new ListPlayer();
 
         foreach (LogRecord log in this.logs)
-            list.AddItem(log.worldKillSomeone.dead);
+            list.AddItem(log.worldKill.dead);
 
 
         return list;
 
     }
 
-    private ListCauseDeath GetCauseList()
+    private ListCauseDeath GetListCause()
     {
 
         var list = new ListCauseDeath();
 
         foreach (LogRecord log in this.logs)
-            list.AddItem(log.worldKillSomeone.cause);
+            list.AddItem(log.worldKill.cause);
 
         return list;
 

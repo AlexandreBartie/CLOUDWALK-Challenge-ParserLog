@@ -11,12 +11,12 @@ public class RegexSettings
 
     // variations of tagWorldKilled
     // example2: Kill: 1022 2 22: <world> killed Isgalamido by MOD_TRIGGER_HURT
-    private string tagWorldKillSomeone = @"^Kill:(.*): <world> killed (.*) by (.*)$";
+    private string tagWorldKill = @"^Kill:(.*): <world> killed (.*) by (.*)$";
 
     // variations of tagPlayerKilled
     // example1: Kill: 3 2 10: Isgalamido killed Dono da Bola by MOD_RAILGUN
     // example2: Kill: 1022 2 22: <world> killed Isgalamido by MOD_TRIGGER_HURT
-    private string tagPlayerKillSomeone = @"^Kill:(.*): (.*) killed (.*) by (.*)$";
+    private string tagPlayerKill = @"^Kill:(.*): (.*) killed (.*) by (.*)$";
 
     public string getPattern(LogType type)
     {
@@ -24,8 +24,8 @@ public class RegexSettings
         return (type) switch
         {
             LogType.eLogSession => tagSession,
-            LogType.eLogWorldKillSomeone => tagWorldKillSomeone,
-            LogType.eLogPlayerKillSomeone => tagPlayerKillSomeone,
+            LogType.eLogWorldKill => tagWorldKill,
+            LogType.eLogPlayerKill => tagPlayerKill,
             _ => ""
         };
 

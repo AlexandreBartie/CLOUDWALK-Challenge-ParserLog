@@ -5,12 +5,12 @@ using parser.data.model;
 
 namespace parser.data.view;
 
-public class ViewPlayerKillSomeone : ViewModel
+public class ViewPlayerKill : ViewModel
 {
-    public ViewPlayerKillSomeone(ViewData view) : base(view, LogType.eLogPlayerKillSomeone) { }
+    public ViewPlayerKill(ViewData view) : base(view, LogType.eLogPlayerKill) { }
 
-    public ListPlayer players => GetPlayers();
-    public ListCauseDeath causes => GetCauseList();
+    public ListPlayer players => GetListPlayer();
+    public ListCauseDeath causes => GetListCause();
 
     public int total => logs.Count;
 
@@ -21,7 +21,7 @@ public class ViewPlayerKillSomeone : ViewModel
 
         foreach (LogRecord log in logs)
         {
-            if (Text.IsMatch(player, log.playerKillSomeone.killer))
+            if (Text.IsMatch(player, log.playerKill.killer))
                 list.Add(log);
 
         }
@@ -37,7 +37,7 @@ public class ViewPlayerKillSomeone : ViewModel
 
         foreach (LogRecord log in logs)
         {
-            if (Text.IsMatch(player, log.playerKillSomeone.dead))
+            if (Text.IsMatch(player, log.playerKill.dead))
                 list.Add(log);
 
         }
@@ -53,7 +53,7 @@ public class ViewPlayerKillSomeone : ViewModel
 
         foreach (LogRecord log in logs)
         {
-            if (Text.IsMatch(cause, log.playerKillSomeone.cause))
+            if (Text.IsMatch(cause, log.playerKill.cause))
                 list.Add(log);
 
         }
@@ -62,15 +62,15 @@ public class ViewPlayerKillSomeone : ViewModel
 
     }
 
-    private ListPlayer GetPlayers()
+    private ListPlayer GetListPlayer()
     {
 
         var list = new ListPlayer();
 
         foreach (LogRecord log in this.logs)
         {
-            list.AddItem(log.playerKillSomeone.killer);
-            list.AddItem(log.playerKillSomeone.dead);
+            list.AddItem(log.playerKill.killer);
+            list.AddItem(log.playerKill.dead);
         }
 
 
@@ -78,13 +78,13 @@ public class ViewPlayerKillSomeone : ViewModel
 
     }
 
-    private ListCauseDeath GetCauseList()
+    private ListCauseDeath GetListCause()
     {
 
         var list = new ListCauseDeath();
 
         foreach (LogRecord log in this.logs)
-            list.AddItem(log.playerKillSomeone.cause);
+            list.AddItem(log.playerKill.cause);
 
         return list;
 

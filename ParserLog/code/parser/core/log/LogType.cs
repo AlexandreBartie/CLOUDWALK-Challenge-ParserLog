@@ -9,9 +9,9 @@ public enum LogType
     eLogSession = 0,
 
     // XX:XX Kill: 1022 2 22: <world> killed Isgalamido by MOD_TRIGGER_HURT
-    eLogWorldKillSomeone = 10,
+    eLogWorldKill = 10,
 
     // XX:XX Kill: 3 4 10: Isgalamido killed Zeh by MOD_RAILGUN
-    eLogPlayerKillSomeone = 11,
+    eLogPlayerKill = 11,
 
 }

@@ -3,7 +3,7 @@ namespace parser.unit;
 public class UT041_CauseDeathWhenWorkKillTest
 {
 
-    private string input = "ListWorldKillSomeone.log";
+    private string input = "ListWorldKill.log";
 
     private ParserLog parser = new();
 
@@ -11,10 +11,10 @@ public class UT041_CauseDeathWhenWorkKillTest
     [InlineData("MOD_FALLING, MOD_TRIGGER_HURT")]
     public void TST01_CauseDeath_GetList(string list)
     {
-        
+
         parser.LoadFile(input);
 
-        Assert.Equal(list, parser.session.WorldKillSomeone.causes.txt);
+        Assert.Equal(list, parser.session.WorldKill.causes.txt);
 
     }
 
@@ -27,7 +27,7 @@ public class UT041_CauseDeathWhenWorkKillTest
 
         parser.LoadFile(input);
 
-        Assert.Equal(count, parser.session.WorldKillSomeone.FilterByHowDied(cause).count);
+        Assert.Equal(count, parser.session.WorldKill.FilterByHowDied(cause).count);
 
     }
 

@@ -32,10 +32,10 @@ public class RegexLog : RegexSettings
         if (MatchLogType(LogType.eLogSession))
             return;
 
-        if (MatchLogType(LogType.eLogWorldKillSomeone))
+        if (MatchLogType(LogType.eLogWorldKill))
             return;
 
-        if (MatchLogType(LogType.eLogPlayerKillSomeone))
+        if (MatchLogType(LogType.eLogPlayerKill))
             return;
 
     }

@@ -7,15 +7,13 @@ public class UT050_SessionOneViewTest
     private ParserLog parser = new();
 
     [Theory]
-    [InlineData("*cyclo*", "cyclops, cyclops smith")]
-    [InlineData("*black*", "Black Knight")]
-    [InlineData("dragon*, dwarf", "dragon, dragon lord, dwarf, dwarf soldier")]
-    public void TST01_CreatureGroup_ByCreatureSpotlight(string rules, string creatures)
+    [InlineData(1, 120, "Kills", "Dead", "MOD_FALLING, MOD_TRIGGER_HURT")]
+    public void TST01_SessionOneViewTest(string rules, string creatures)
     {
 
         parser.LoadFile(input);
 
-        var list = parser.CreatureSpotlight.creatures;
+        var list = parser.session.WorldKill.players;
 
         Assert.Equal(creatures, list.txt);
 

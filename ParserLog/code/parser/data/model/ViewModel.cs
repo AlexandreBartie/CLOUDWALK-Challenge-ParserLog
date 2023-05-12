@@ -1,4 +1,5 @@
 using parser.core.log;
+using parser.data.view;
 
 namespace parser.data.model;
 
