@@ -8,7 +8,7 @@ public class UT041_CauseDeathWhenWorkKillTest
     private ParserLog parser = new();
 
     [Theory]
-    [InlineData("MOD_FALLING, MOD_TRIGGER_HURT")]
+    [InlineData("FALLING, TRIGGER_HURT")]
     public void TST01_CauseDeath_GetList(string list)
     {
 
@@ -19,9 +19,9 @@ public class UT041_CauseDeathWhenWorkKillTest
     }
 
     [Theory]
-    [InlineData("MOD_FALLING", 11)]
-    [InlineData("MOD_TRIGGER_HURT", 9)]
-    [InlineData("MOD_ROCKET_SPLASH", 0)]
+    [InlineData("FALLING", 11)]
+    [InlineData("TRIGGER_HURT", 9)]
+    [InlineData("ROCKET_SPLASH", 0)]
     public void TST02_CauseDeath_Count(string cause, int count)
     {
 

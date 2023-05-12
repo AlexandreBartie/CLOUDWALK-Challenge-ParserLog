@@ -8,7 +8,7 @@ public class UT042_CauseDeathWhenPlayerKillTest
     private ParserLog parser = new();
 
     [Theory]
-    [InlineData("MOD_MACHINEGUN, MOD_ROCKET, MOD_ROCKET_SPLASH")]
+    [InlineData("MACHINEGUN, ROCKET, ROCKET_SPLASH")]
     public void TST01_CauseDeath_GetList(string list)
     {
 
@@ -19,10 +19,10 @@ public class UT042_CauseDeathWhenPlayerKillTest
     }
 
     [Theory]
-    [InlineData("MOD_ROCKET", 7)]
-    [InlineData("MOD_ROCKET_SPLASH", 7)]
-    [InlineData("MOD_MACHINEGUN", 1)]
-    [InlineData("MOD_FALLING", 0)]
+    [InlineData("ROCKET", 7)]
+    [InlineData("ROCKET_SPLASH", 7)]
+    [InlineData("MACHINEGUN", 1)]
+    [InlineData("FALLING", 0)]
     public void TST02_CauseDeath_Count(string cause, int count)
     {
 

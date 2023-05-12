@@ -4,6 +4,6 @@ public class ListCauseDeath : ListEntity<CauseDeath> { }
 
 public class CauseDeath : Entity
 {
-    public CauseDeath(string name) : base(name) { }
+    public CauseDeath(string name) : base(name) {} 
 }
 

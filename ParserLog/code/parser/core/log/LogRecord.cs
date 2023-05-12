@@ -18,7 +18,7 @@ public class LogRecord : RegexBase
         var ILog = new ILogWorldKill(this);
 
         ILog.dead = GetParameter(2);
-        ILog.cause = GetParameter(3);
+        ILog.cause = GetParameterFixed(3);
 
         return ILog;
 
@@ -31,10 +31,16 @@ public class LogRecord : RegexBase
 
         ILog.killer = GetParameter(2);
         ILog.dead = GetParameter(3);
-        ILog.cause = GetParameter(4);
+        ILog.cause = GetParameterFixed(4);
 
         return ILog;
 
+    }
+
+    private string GetParameterFixed(int index)
+    { 
+        string name = GetParameter(index);
+        return name.Replace("MOD_", ""); 
     }
 
 }

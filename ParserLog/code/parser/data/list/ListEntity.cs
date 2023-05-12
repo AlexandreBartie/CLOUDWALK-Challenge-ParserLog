@@ -72,10 +72,12 @@ public abstract class ListEntity<T> : List<T> where T : Entity
 
 public abstract class Entity
 {
-    public readonly string name = "";
+    private string _name  = "";
+    
+    public string name => _name;
 
     public Entity(string name)
-    { this.name = name; }
+    { _name = name; }
 
     public override string ToString() => name;
 
@@ -83,6 +85,9 @@ public abstract class Entity
     {
         return Text.IsMatchByWildcard(name, pattern);
     }
+
+    public void SetName(string name)
+    { _name = name; }
 
 }
 

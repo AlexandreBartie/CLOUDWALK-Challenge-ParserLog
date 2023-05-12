@@ -20,8 +20,8 @@ public class UT010_LogRecordTest
     }
 
     [Theory]
-    [InlineData("20:54 Kill: 1022 2 22: <world> killed Isgalamido by MOD_TRIGGER_HURT", "Isgalamido", "MOD_TRIGGER_HURT")]
-    [InlineData("09:10 Kill: 1022 2 19: <world> killed Dono da Bola by MOD_FALLING", "Dono da Bola", "MOD_FALLING")]
+    [InlineData("20:54 Kill: 1022 2 22: <world> killed Isgalamido by MOD_TRIGGER_HURT", "Isgalamido", "TRIGGER_HURT")]
+    [InlineData("09:10 Kill: 1022 2 19: <world> killed Dono da Bola by MOD_FALLING", "Dono da Bola", "FALLING")]
 
     public void TST02_WorldKill(string info, string dead, string cause, LogType type = LogType.eLogWorldKill)
     {
@@ -35,9 +35,9 @@ public class UT010_LogRecordTest
     }
 
     [Theory]
-    [InlineData("22:06 Kill: 2 3 7: Isgalamido killed Mocinha by MOD_ROCKET_SPLASH", "Isgalamido", "Mocinha", "MOD_ROCKET_SPLASH")]
-    [InlineData("22:40 Kill: 2 2 7: Isgalamido killed Isgalamido by MOD_ROCKET_SPLASH", "Isgalamido", "Isgalamido", "MOD_ROCKET_SPLASH")]
-    [InlineData("5:11 Kill: 4 5 6: Zeh killed Assasinu Credi by MOD_ROCKET", "Zeh", "Assasinu Credi", "MOD_ROCKET")]
+    [InlineData("22:06 Kill: 2 3 7: Isgalamido killed Mocinha by MOD_ROCKET_SPLASH", "Isgalamido", "Mocinha", "ROCKET_SPLASH")]
+    [InlineData("22:40 Kill: 2 2 7: Isgalamido killed Isgalamido by MOD_ROCKET_SPLASH", "Isgalamido", "Isgalamido", "ROCKET_SPLASH")]
+    [InlineData("5:11 Kill: 4 5 6: Zeh killed Assasinu Credi by MOD_ROCKET", "Zeh", "Assasinu Credi", "ROCKET")]
     public void TST03_PlayerKill(string info, string killer, string dead, string cause, LogType type = LogType.eLogPlayerKill)
     {
 

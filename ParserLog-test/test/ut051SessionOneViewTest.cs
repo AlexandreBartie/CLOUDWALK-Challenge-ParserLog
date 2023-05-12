@@ -7,7 +7,7 @@ public class UT050_SessionOneViewTest
     private ParserLog parser = new();
 
     [Theory]
-    [InlineData(1, 105, "Assasinu Credi, Dono da Bola, Isgalamido, Zeh", "MOD_FALLING, MOD_MACHINEGUN, MOD_RAILGUN, MOD_ROCKET, MOD_ROCKET_SPLASH, MOD_SHOTGUN, MOD_TRIGGER_HURT")]
+    [InlineData(1, 105, "Assasinu Credi, Dono da Bola, Isgalamido, Zeh", "FALLING, MACHINEGUN, RAILGUN, ROCKET, ROCKET_SPLASH, SHOTGUN, TRIGGER_HURT")]
     public void TST01_SessionOneViewTest(int game, int kills, string ListPlayers, string ListCauses)
     {
 
