@@ -24,6 +24,16 @@ public class ParserSessions : List<ParserSession>
 
     public bool isNull => (all.Count == 0);
 
+    public ParserSession GetSession(int index)
+    {
+        if (this.Count >= index)
+            return this[index-1];
+
+        return new ParserSession();
+    }
+
+
+
     public void Populate(string[] lines)
     {
         LogRecord log;
@@ -31,7 +41,7 @@ public class ParserSessions : List<ParserSession>
         foreach (string line in lines)
         {
 
-            if (string.IsNullOrWhiteSpace(line))
+            if (!string.IsNullOrWhiteSpace(line))
             {
 
                 log = new LogRecord(line);

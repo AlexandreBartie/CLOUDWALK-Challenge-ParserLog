@@ -9,6 +9,8 @@ public class ViewData : ViewFormat
     public readonly ViewWorldKill WorldKill;
     public readonly ViewPlayerKill PlayerKill;
 
+    public int totalKills => WorldKill.count + PlayerKill.count;
+
     public ListPlayer players => GetListPlayer();
     public ListCauseDeath causes => GetListCause();
 

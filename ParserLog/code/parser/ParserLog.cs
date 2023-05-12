@@ -10,9 +10,10 @@ public class ParserLog
     private ParserImport import;
     private ViewOutput output;
 
-    protected ParserSessions sessions;
+    private ParserSessions sessions;
 
     public ParserSession session => sessions.current;
+
     public ParserShow show => settings.show;
     public string txt => output.txt;
 
@@ -34,9 +35,7 @@ public class ParserLog
         sessions.Populate(lines);;
     }
 
-
-
-
+    public ParserSession data(int index) => sessions.GetSession(index);
 
 }
 
