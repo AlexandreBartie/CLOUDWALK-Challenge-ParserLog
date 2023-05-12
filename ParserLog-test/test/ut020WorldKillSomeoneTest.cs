@@ -29,7 +29,7 @@ public class UT020_WorldKillSomeoneTest
 
         parser.LoadFile(input);
 
-        Assert.Equal(list, parser.WorldKillSomeone.players.txt);
+        Assert.Equal(list, parser.show .WorldKillSomeone.players.txt);
 
     }
 

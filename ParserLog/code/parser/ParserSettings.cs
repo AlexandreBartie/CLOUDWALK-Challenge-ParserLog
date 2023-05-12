@@ -4,6 +4,7 @@ namespace parser;
 public class ParserSettings : ParserSettingsData
 {
     public readonly ParserShow show = new();
+
     public string GetInputFileFolder(string path)
     {
         if (path == "")
@@ -20,6 +21,16 @@ public class ParserSettings : ParserSettingsData
         return path + "output/";
     }
 
+
+}
+
+public class ParserShow
+{
+
+    public bool PlayerStatistics = true;
+    public bool CreatureStatistics = true;
+    public bool LootedItems = true;
+    public bool CreatureSpotlight = true;
 
 }
 

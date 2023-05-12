@@ -1,35 +1,23 @@
 using parser.core.log;
+using parser.data.view;
 
 namespace parser.data.model;
 
 public class ViewData : ViewFormat
 {
 
-    public ParserSessions sessions = new();
-
     public readonly ViewWorldKillSomeone WorldKillSomeone;
     public readonly ViewPlayerKillSomeone PlayerKillSomeone;
 
-    public LogList all => (sessions.all);
+    public readonly LogList logs;
 
-    public bool isNull => (sessions.isNull);
-
-    public ViewData()
+    public ViewData(LogList logs)
     {
+        this.logs = logs;
 
         WorldKillSomeone = new ViewWorldKillSomeone(this);
         PlayerKillSomeone = new ViewPlayerKillSomeone(this);
 
-    }
-
-    // public void SetSpotlight(string rules)
-    // {
-    //     CreatureSpotlight.Setup(rules);
-    // }
-
-    public void Populate(string[] lines)
-    {
-        sessions.Populate(lines);
     }
 
 }
