@@ -1,4 +1,3 @@
-using parser.core;
 namespace parser.unit;
 
 public class UT030_PlayerKillSomeoneTest
@@ -25,7 +24,7 @@ public class UT030_PlayerKillSomeoneTest
 
     [Theory]
     [InlineData("ListPlayerKillSomeone", "Dono da Bola, Isgalamido, Zeh")]
-    public void TST02_PlayerKillSomeone_PlayerList(string file, string list)
+    public void TST02_PlayerKillSomeone_ListPlayer(string file, string list)
     {
 
         parser.LoadFile(input);

@@ -2,7 +2,7 @@ using lib;
 
 namespace parser.data.list;
 
-public abstract class EntityList<T> : List<T> where T : Entity
+public abstract class ListEntity<T> : List<T> where T : Entity
 {
     public string txt => string.Join(", ", this.OrderBy(item => item.name));
 

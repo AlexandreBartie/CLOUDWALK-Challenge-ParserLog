@@ -9,8 +9,8 @@ public class ViewPlayerKillSomeone : ViewModel
 {
     public ViewPlayerKillSomeone(ViewData view) : base(view, LogType.eLogPlayerKillSomeone) { }
 
-    public PlayerList players => GetPlayers();
-    public CauseDeathList causes => GetCauseList();
+    public ListPlayer players => GetPlayers();
+    public ListCauseDeath causes => GetCauseList();
 
     public int total => logs.Count;
 
@@ -62,10 +62,10 @@ public class ViewPlayerKillSomeone : ViewModel
 
     }
 
-    private PlayerList GetPlayers()
+    private ListPlayer GetPlayers()
     {
 
-        var list = new PlayerList();
+        var list = new ListPlayer();
 
         foreach (LogRecord log in this.logs)
         {
@@ -78,10 +78,10 @@ public class ViewPlayerKillSomeone : ViewModel
 
     }
 
-    private CauseDeathList GetCauseList()
+    private ListCauseDeath GetCauseList()
     {
 
-        var list = new CauseDeathList();
+        var list = new ListCauseDeath();
 
         foreach (LogRecord log in this.logs)
             list.AddItem(log.playerKillSomeone.cause);

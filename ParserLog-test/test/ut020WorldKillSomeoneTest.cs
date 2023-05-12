@@ -1,4 +1,3 @@
-using parser.core;
 namespace parser.unit;
 
 public class UT020_WorldKillSomeoneTest
@@ -24,7 +23,7 @@ public class UT020_WorldKillSomeoneTest
 
     [Theory]
     [InlineData("Assasinu Credi, Dono da Bola, Isgalamido, Zeh")]
-    public void TST02_WorldKillSomeone_PlayerList(string list)
+    public void TST02_WorldKillSomeone_ListPlayer(string list)
     {
 
         parser.LoadFile(input);

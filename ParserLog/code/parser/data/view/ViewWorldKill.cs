@@ -7,8 +7,8 @@ namespace parser.data.view;
 
 public class ViewWorldKillSomeone : ViewModel
 {
-    public PlayerList players => GetPlayerList();
-    public CauseDeathList causes => GetCauseList();
+    public ListPlayer players => GetListPlayer();
+    public ListCauseDeath causes => GetCauseList();
 
     public int totalDeaths => logs.Count;
 
@@ -46,10 +46,10 @@ public class ViewWorldKillSomeone : ViewModel
 
     }
 
-    private PlayerList GetPlayerList()
+    private ListPlayer GetListPlayer()
     {
 
-        var list = new PlayerList();
+        var list = new ListPlayer();
 
         foreach (LogRecord log in this.logs)
             list.AddItem(log.worldKillSomeone.dead);
@@ -59,10 +59,10 @@ public class ViewWorldKillSomeone : ViewModel
 
     }
 
-    private CauseDeathList GetCauseList()
+    private ListCauseDeath GetCauseList()
     {
 
-        var list = new CauseDeathList();
+        var list = new ListCauseDeath();
 
         foreach (LogRecord log in this.logs)
             list.AddItem(log.worldKillSomeone.cause);
