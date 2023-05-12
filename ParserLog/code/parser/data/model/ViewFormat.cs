@@ -14,39 +14,41 @@ public class ViewFormat : ViewFormatSpotLight
     private const string LABEL_POINTS = "points";
     private const string LABEL_ITEMS = "items";
 
-    public string logTitle(string title)
+    public string logTitle(string title, string subTitle = "")
     {
-        return logBlock(title, true);
+        if (subTitle != "")
+            title = $"{title}: {subTitle}";
+
+        return logBlock(title, true, false);
     }
 
-    public string logSubTitle(string title, string subTitle)
+    public string logBottom(string title)
     {
-        return logTitle($"{title}: {subTitle}");
+        return logBlock(title, false, true);
     }
-
-    public string logEnd(string title)
-    {
-        return logBlock(title, false);
-    }
-    private string logBlock(string title, bool start)
+    private string logBlock(string title, bool top, bool bottom)
     {
         var memo = new Memo();
 
         char markTop; char markBottom;
 
-        if (start)
+        if (top)
         { markTop = '='; markBottom = '-'; }
         else
         { markTop = '-'; markBottom = '='; }
 
-        memo.add(logLine(markTop));
+        if (top)
+            memo.add(logLine(markTop));
+
         memo.add(Text.TabCentralize(title, SIZE_LINE));
-        memo.add(logLine(markBottom));
+
+        if (bottom)
+            memo.add(logLine(markBottom));
 
         return memo.txt;
     }
 
-    private string logLine(char mark = '=')
+    public string logLine(char mark = '-')
     {
         return Text.Repeat(mark, SIZE_LINE);
     }
@@ -85,16 +87,6 @@ public class ViewFormatSpotLight
     private string FormatCreature(string creature, int level) => Text.TabLevel(creature.PadRight(COLUMN_CREATURE), level, 1);
     private string FormatColumn(string column, int size = COLUMN_POINTS) => column.PadLeft(size);
     private string FormatPoints(int value) => value.ToString(FORMAT_NUMBER).PadLeft(COLUMN_POINTS);
-
-    public string logColumns()
-    {
-        var columnCreature = "Creature Name";
-        var columnDamage = "DamagePlayer";
-        var columnLost = "LostPower";
-        var columnHealed = "HealedPower";
-
-        return $"{Text.Spaces(02)}{columnCreature}{Text.Spaces(5)}{columnDamage}{Text.Spaces(4)}{columnLost}{Text.Spaces(2)}{columnHealed}";
-    }
 
     public string GetSpotlight(string creature, int damagePlayer, int lostPower, int healedPower)
     {

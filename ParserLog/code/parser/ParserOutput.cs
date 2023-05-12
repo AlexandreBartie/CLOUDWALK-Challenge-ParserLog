@@ -1,30 +1,51 @@
 using lib;
 
-namespace parser.data.model;
+namespace parser;
 
-public class ViewOutput
+public class ParserOutput
 {
 
     private ParserLog parser;
 
-    private ParserSession session => parser.session;
-
     private ParserShow show => parser.show;
 
-    public string txt => getTXT();
-
-    public ViewOutput(ParserLog parser)
+    public ParserOutput(ParserLog parser)
     {
         this.parser = parser;
     }
-    private string getTXT()
+
+    public string txt(ParserSessions sessions)
     {
 
         var memo = new Memo();
 
-        if (parser.show.PlayerStatistics)
+        memo.add(parser.session.logTitle("Statistics"));
+
+        foreach (ParserSession session in sessions)
+            memo.add(getSessionTXT(session));
+
+        memo.add(parser.session.logEnd("Statistics based by file log extracted"));
+
+        return (memo.txt);
+
+    }
+    private string getSessionTXT(ParserSession session)
+    {
+
+        var memo = new Memo();
+
+        memo.add(parser.session.logLine());
+        memo.add($"Game: {session.order}");
+        memo.add($"Total Kills: {session.totalKills}");
+        memo.add($"  - byWorld: {session.WorldKill.count}");
+        memo.add($" - byPlayer: {session.PlayerKill.count}");
+        memo.add($"    Players: {session.players.txt}");
+        memo.add($"    Players: {session.players.txt}");
+        memo.add(parser.session.logLine());
+
+        if (show.PlayerStatistics)
         {
-            memo.add(session.logTitle("Player Statistics"));
+
             // memo.add(parser.PlayerKill.log("Kills"));
 
         }
@@ -52,11 +73,8 @@ public class ViewOutput
         //     }
         // }
 
-        memo.add(session.logEnd("Statistics based by file log extracted"));
-
         return (memo.txt);
 
     }
-
 
 }

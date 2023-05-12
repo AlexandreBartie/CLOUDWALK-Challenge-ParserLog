@@ -24,8 +24,8 @@ class Program
         string creatureRules;
 
 #if DEBUG
-        fileName = "Session-Full.txt";
-        creatureRules = "*Knight*"; // "cyclop*, dragon*"; //
+        fileName = "Session-Full.log";
+        creatureRules = "*Knight*";
 #else
         fileName = args[0];
         creatureRules = (args.Length >= 2) ? args[1] : "";

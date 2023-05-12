@@ -1,5 +1,3 @@
-using parser.data.model;
-
 namespace parser;
 
 public class ParserLog
@@ -8,21 +6,21 @@ public class ParserLog
 
     private string path = "";
     private ParserImport import;
-    private ViewOutput output;
+    private ParserOutput output;
 
-    private ParserSessions sessions;
+    public ParserSessions sessions;
 
     public ParserSession session => sessions.current;
 
     public ParserShow show => settings.show;
-    public string txt => output.txt;
+    public string txt => output.txt(sessions);
 
     public ParserLog()
     {
         sessions = new ParserSessions();
-        
+
         import = new ParserImport(this);
-        output = new ViewOutput(this);
+        output = new ParserOutput(this);
     }
 
     public bool LoadFile(string name)
@@ -32,7 +30,7 @@ public class ParserLog
 
     public void LoadLines(string[] lines)
     {
-        sessions.Populate(lines);;
+        sessions.Populate(lines); ;
     }
 
     public ParserSession data(int index) => sessions.GetSession(index);

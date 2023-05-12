@@ -5,12 +5,13 @@ namespace parser;
 
 public class ParserSession : ViewData
 {
-    public string tag = "";
+    public int order;
 
+    public string tag => "Game#${order}";
     public ParserSession() : base(new LogList()) {}
 
-    public void SetTag(int order)
-    { tag = string.Format("Game#${0}", order); }
+    public void SetOrder(int order)
+    { this.order = order; }
 
 }
 
@@ -63,7 +64,7 @@ public class ParserSessions : List<ParserSession>
 
         current = this.Last();
         
-        current.SetTag(Count);
+        current.SetOrder(Count);
 
     }
 
