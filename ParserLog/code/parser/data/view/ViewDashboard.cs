@@ -6,17 +6,21 @@ namespace parser.data.view;
 
 public class ViewDashBoard : ViewFormat
 {
-    public readonly ViewWorldKill WorldKill;
-    public readonly ViewPlayerKill PlayerKill;
+    public readonly ViewWorldKill worldKill;
+    public readonly ViewPlayerKill playerKill;
 
-    public int totalKills => GetTotalKills();
+    private ViewScore score;
 
-    public int totalScore(string player) => GetScore(player);
-    public int totalScoreKills(string player) => GetScoreKills(player);
-    public int totalScoreKilled(string player) => GetScoreKilled(player);
+    public int totalKills => score.GetTotalKills();
+    public int totalKillsByWorld => score.GetTotalKillsByWorld();
+    public int totalKillsByPlayer => score.GetTotalKillsByPlayer();
 
-    public ListPlayer players => GetListPlayer();
-    public ListCauseDeath causes => GetListCause();
+    public int totalScore(string player) => score.GetScore(player);
+    public int totalScoreKills(string player) => score.GetScoreKills(player);
+    public int totalScoreKilled(string player) => score.GetScoreKilled(player);
+
+    public ListPlayer players => score.GetListPlayer();
+    public ListCauseDeath causes => score.GetListCause();
 
     public readonly LogList logs;
 
@@ -24,45 +28,56 @@ public class ViewDashBoard : ViewFormat
     {
         this.logs = logs;
 
-        WorldKill = new ViewWorldKill(this);
-        PlayerKill = new ViewPlayerKill(this);
+        worldKill = new ViewWorldKill(this);
+        playerKill = new ViewPlayerKill(this);
+
+        score = new ViewScore(this);
 
     }
 
-    private ListPlayer GetListPlayer()
+}
+
+public class ViewScore
+{
+    private ViewDashBoard view;
+    
+    public int GetTotalKills() => GetTotalKillsByWorld() + GetTotalKillsByPlayer();
+    public int GetTotalKillsByWorld() => view.worldKill.count;
+    public int GetTotalKillsByPlayer() => view.playerKill.count;
+
+    public ViewScore(ViewDashBoard view)
+    {
+        this.view = view;
+    }
+
+    public ListPlayer GetListPlayer()
     {
 
         var list = new ListPlayer();
 
-        list.AddList(WorldKill.players);
-        list.AddList(PlayerKill.players);
+        list.AddList(view.worldKill.players);
+        list.AddList(view.playerKill.players);
 
         return list;
 
     }
 
-    private ListCauseDeath GetListCause()
+    public ListCauseDeath GetListCause()
     {
 
         var list = new ListCauseDeath();
 
-        list.AddList(WorldKill.causes);
-        list.AddList(PlayerKill.causes);
+        list.AddList(view.worldKill.causes);
+        list.AddList(view.playerKill.causes);
 
         return list;
 
     }
 
-    private int GetTotalKills() => GetTotalWorldKills() + GetTotalPlayerKills();
-    private int GetTotalWorldKills() => WorldKill.count;
-    private int GetTotalPlayerKills() => PlayerKill.count;
-
-    private int GetScoreKills(string player) => PlayerKill.FilterByWhoKill(player).count;
-
-    private int GetScoreKilled(string player)
-    { return WorldKill.FilterByWhoDied(player).count + PlayerKill.FilterByWhoDied(player).count; }
-
-    private int GetScore(string player)
+    public int GetScore(string player)
     { return GetScoreKills(player) - GetScoreKilled(player); }
+    public int GetScoreKills(string player) => view.playerKill.FilterByWhoKill(player).count;
+    public int GetScoreKilled(string player)
+    { return view.worldKill.FilterByWhoDied(player).count + view.playerKill.FilterByWhoDied(player).count; }
 
 }

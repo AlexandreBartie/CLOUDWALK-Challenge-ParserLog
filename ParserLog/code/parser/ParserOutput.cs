@@ -32,18 +32,22 @@ public class ParserOutput
     }
     private string getSessionTXT(ParserSession session)
     {
-
+       
         var memo = new Memo();
 
         memo.add(parser.session.logLine());
         memo.add($"Game: #{session.order}");
-        memo.add($"Total Kills: {session.totalKills} -byWorld: {session.WorldKill.count} -byPlayer: {session.PlayerKill.count}");
+        memo.add($"Total Kills: {session.totalKills} -byWorld: {session.totalKillsByWorld} -byPlayer: {session.totalKillsByPlayer}");
         memo.add($"    Players: {session.players.txt}");
         memo.add($"      Score:");
         memo.add($"      Score: {session.players.txt}");
 
         foreach (Player player in session.players)
-            memo.add($"           {player.name}: 100 -byWorld: {session.WorldKill.count} -byPlayer: {session.PlayerKill.count}");
+        {
+            var name = player.name;
+            memo.add($"           {name}: {session.totalScore(name)} -byWorld: {session.totalScoreKills(name)} -byPlayer: {session.totalScoreKilled(name)}");
+        }
+            
 
 
         if (show.PlayerStatistics)

@@ -17,7 +17,7 @@ public class UT020_WorldKillTest
 
         parser.LoadFile(input);
 
-        Assert.Equal(count, parser.session.WorldKill.FilterByWhoDied(player).count);
+        Assert.Equal(count, parser.session.worldKill.FilterByWhoDied(player).count);
 
     }
 
@@ -28,7 +28,7 @@ public class UT020_WorldKillTest
 
         parser.LoadFile(input);
 
-        Assert.Equal(list, parser.session.WorldKill.players.txt);
+        Assert.Equal(list, parser.session.worldKill.players.txt);
 
     }
 

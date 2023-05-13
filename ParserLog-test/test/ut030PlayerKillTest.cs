@@ -17,8 +17,8 @@ public class UT030_PlayerKillTest
 
         parser.LoadFile(input);
 
-        Assert.Equal(kill, parser.session.PlayerKill.FilterByWhoKill(player).count);
-        Assert.Equal(dead, parser.session.PlayerKill.FilterByWhoDied(player).count);
+        Assert.Equal(kill, parser.session.playerKill.FilterByWhoKill(player).count);
+        Assert.Equal(dead, parser.session.playerKill.FilterByWhoDied(player).count);
 
     }
 
@@ -29,7 +29,7 @@ public class UT030_PlayerKillTest
 
         parser.LoadFile(input);
 
-        Assert.Equal(list, parser.session.PlayerKill.players.txt);
+        Assert.Equal(list, parser.session.playerKill.players.txt);
 
     }
 
