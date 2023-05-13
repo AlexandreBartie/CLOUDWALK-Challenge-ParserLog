@@ -34,35 +34,24 @@ public class ParserShow
     public bool KillDetails = true;
 }
 
-public class ParserSettingsData
-{
-
-    private string _fileFolder = "";
-
-    public void SetFileFolder(string path)
+    public class ParserSettingsData 
     {
-        _fileFolder = path;
+        private string _fileFolder = "";
+        public void SetFileFolder(string path) 
+        {
+            _fileFolder = path;
+        }
+        public string GetFileFolder() 
+        {
+            if (_fileFolder == "")
+            {
+            #if DEBUG
+                        _fileFolder = "C:/DEVOPS/CHALLENGE/CLOUDWALK/Challenge-ParserLog/file/";
+            #else
+                        _fileFolder = AppDomain.CurrentDomain.BaseDirectory;
+            #endif
+            }
+            return _fileFolder;
+        }
     }
-
-    public string GetFileFolder()
-    {
-        if (_fileFolder == "")
-{
-#if DEBUG
-
-            _fileFolder = "C:/DEVOPS/CHALLENGE/CLOUDWALK/Challenge-ParserLog/file/";
-
-#else
-
-            _fileFolder = AppDomain.CurrentDomain.BaseDirectory;
-
-#endif
-}
-
-
-
-        return _fileFolder;
-    }
-
-}
 
