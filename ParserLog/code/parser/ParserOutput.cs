@@ -10,6 +10,8 @@ public class ParserOutput
 
     private ParserShow show => parser.show;
 
+    private Memo memo = new();
+
     public ParserOutput(ParserLog parser)
     {
         this.parser = parser;
@@ -18,30 +20,38 @@ public class ParserOutput
     public string txt(ParserSessions sessions)
     {
 
-        var memo = new Memo();
+        memo = new Memo();
 
         memo.add(parser.session.logTitle("Statistics"));
 
         foreach (ParserSession session in sessions)
-            memo.add(getSessionTXT(session));
+            GetSession(session);
 
         memo.add(parser.session.logBottom("Statistics based by file log extracted"));
 
         return (memo.txt);
 
     }
-    private string getSessionTXT(ParserSession session)
+    private void GetSession(ParserSession session)
     {
 
-        var memo = new Memo();
-
-        memo.add(session.logLine());
+        memo.add(session.logLine('='));
         memo.add(session.logContent("Game", session.tag));
         memo.add(session.logKills("Total Kills", session.totalKills, session.totalKillsByWorld, session.totalKillsByPlayer));
         memo.add(session.logContent("Players", session.players.txt));
-        memo.add(session.logContent("Score"));
 
-        foreach (Player player in session.ranking)
+        GetRankingKills(session);
+
+        GetRankingCauses(session);
+
+    }
+
+    private void GetRankingKills(ParserSession session)
+    {
+
+        memo.add(session.logGroup("Score by Kills"));
+
+        foreach (Player player in session.rankingKills)
         {
             var name = player.name;
 
@@ -52,40 +62,27 @@ public class ParserOutput
 
             memo.add(session.logScorePlayer(name, score, scoreKills, scoreDeadByWorld, scoreDeadByPlayer));
         }
+    }
 
-
-
-        if (show.PlayerStatistics)
+    private void GetRankingCauses(ParserSession session)
+    {
+       
+        memo.add(session.logGroup("Cause of Death"));
+        
+        foreach (CauseDeath cause in session.rankingCauses)
         {
-            // memo.add(parser.PlayerKill.log("Kills"));
+            var name = cause.name;
 
+            var score = session.totalScoreCause(name);
+            var scoreByWorld = session.totalScoreCauseByWorld(name);
+            var scoreByPlayer = session.totalScoreCauseByPlayer(name);
+
+            memo.add(session.logScoreCause(name, score, scoreByWorld, scoreByPlayer));
         }
 
-        // if (parser.show.LootedItems)
-        // {
-        //     memo.add(parser.logTitle("Looted Items"));
-        //     memo.add(parser.PlayerLootedByCreature.log("LootedByCreature"));
-        // }
+    }        
+    
 
-        // if (parser.show.CreatureStatistics)
-        // {
-        //     memo.add(parser.logTitle("Creature Statistics"));
-        //     memo.add(parser.CreatureHealedPower.log("HealedPower"));
-        //     memo.add(parser.CreatureLostPower.log("LostPower"));
-        // }
 
-        // if (parser.show.CreatureSpotlight)
-        // {
-        //     if (parser.CreatureSpotlight.HasCreatures)
-        //     {
-        //         memo.add(parser.logSubTitle("Creature Spotlight", parser.CreatureSpotlight.wildcard));
-        //         memo.add(parser.logColumns());
-        //         memo.add(parser.CreatureSpotlight.log());
-        //     }
-        // }
-
-        return (memo.txt);
-
-    }
 
 }

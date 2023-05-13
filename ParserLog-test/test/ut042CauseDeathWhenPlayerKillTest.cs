@@ -32,4 +32,15 @@ public class UT042_CauseDeathWhenPlayerKillTest
 
     }
 
+    [Theory]
+    [InlineData("ROCKET, ROCKET_SPLASH, MACHINEGUN")]
+    public void TST03_CauseDeath_Ranking(string ranking)
+    {
+
+        parser.LoadFile(input);
+
+        Assert.Equal(ranking, parser.session.rankingCauses.raw);
+
+    }
+
 }

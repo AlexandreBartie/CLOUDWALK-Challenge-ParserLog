@@ -44,9 +44,19 @@ public class UT051_SessionOneViewTest
 
         parser.LoadFile(input);
 
-        Assert.Equal(ranking, parser.session.ranking.raw);
+        Assert.Equal(ranking, parser.session.rankingKills.raw);
 
     }
 
+    [Theory]
+    [InlineData("ROCKET_SPLASH, ROCKET, FALLING, TRIGGER_HURT, RAILGUN, MACHINEGUN, SHOTGUN")]
+    public void TST03_SessionOneViewTest_RankingCauses(string ranking)
+    {
+
+        parser.LoadFile(input);
+
+        Assert.Equal(ranking, parser.session.rankingCauses.raw);
+
+    }
 
 }

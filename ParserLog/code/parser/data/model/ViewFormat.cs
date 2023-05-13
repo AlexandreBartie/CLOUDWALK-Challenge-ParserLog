@@ -5,7 +5,7 @@ namespace parser.data.model;
 public class ViewFormat
 {
     private const int SIZE_LINE = 90;
-    private const int COLUMN_LABEL = 15;
+    private const int COLUMN_LABEL = 20;
 
     private const int COLUMN_VALUE = 3;
     private const int COLUMN_UNIT = 8;
@@ -47,6 +47,15 @@ public class ViewFormat
         return memo.txt;
     }
 
+    public string logGroup(string group)
+    {
+        var memo = new Memo();
+        
+        memo.add(logLine());
+        memo.add(logContent(group));
+
+        return memo.txt;
+    }
     public string logLine(char mark = '-')
     {
         return Text.Repeat(mark, SIZE_LINE);
@@ -73,6 +82,18 @@ public class ViewFormat
         var logScoreDeadByPlayer = FormatTupla(scoreDeadByPlayer, "byPlayer");
 
         var content = $"{logScore} | {logScoreKills} [ deads: {logScoreDeadByWorld} | {logScoreDeadByPlayer} ]";
+
+        return logContent(label, content);
+    }
+
+    public string logScoreCause(string cause, int score, int scoreByWorld, int scoreByPlayer)
+    {
+        var label = "-"+ cause;
+        var logScore = FormatTupla(score, "deaths");
+        var logScoreByWorld = FormatTupla(scoreByWorld, "byWorld");
+        var logScoreByPlayer = FormatTupla(scoreByPlayer, "byPlayer");
+
+        var content = $"{logScore} [ {logScoreByWorld} | {logScoreByPlayer} ]";
 
         return logContent(label, content);
     }

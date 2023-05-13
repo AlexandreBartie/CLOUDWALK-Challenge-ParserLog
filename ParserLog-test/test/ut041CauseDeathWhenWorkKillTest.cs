@@ -31,4 +31,15 @@ public class UT041_CauseDeathWhenWorkKillTest
 
     }
 
+    [Theory]
+    [InlineData("FALLING, TRIGGER_HURT")]
+    public void TST03_CauseDeath_Ranking(string ranking)
+    {
+
+        parser.LoadFile(input);
+
+        Assert.Equal(ranking, parser.session.rankingCauses.raw);
+
+    }
+
 }
