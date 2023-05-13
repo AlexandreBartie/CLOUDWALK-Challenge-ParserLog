@@ -27,33 +27,32 @@ public class ParserSettings : ParserSettingsData
 public class ParserShow
 {
 
-    public bool PlayerStatistics = true;
-    public bool CreatureStatistics = true;
-    public bool LootedItems = true;
-    public bool CreatureSpotlight = true;
+    public bool ResumeGame = true;
+    public bool RankingKills = true;
+    public bool RankingCauses = true;
 
+    public bool KillDetails = true;
 }
 
 public class ParserSettingsData
 {
 
-    protected string fileFolder
-    {
+    private string _fileFolder = "";
 
+    public string FileFolder
+    {
         get
         {
+            if (_fileFolder == "")
+                _fileFolder = AppDomain.CurrentDomain.BaseDirectory;
 
-            var fileFolder = "";
-
-#if DEBUG
-            fileFolder = "C:/DEVOPS/CHALLENGE/CLOUDWALK/Challenge-ParserLog/file/";
-#else
-            fileFolder = AppDomain.CurrentDomain.BaseDirectory;
-#endif
-
-            return fileFolder;
+            return _fileFolder;
         }
-
+        set
+        {
+            _fileFolder = value;
+        }
     }
+
 }
 

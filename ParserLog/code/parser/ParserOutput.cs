@@ -35,18 +35,38 @@ public class ParserOutput
     private void GetSession(ParserSession session)
     {
 
+        var details = parser.show.KillDetails;
+
         memo.add(session.logLine('='));
         memo.add(session.logContent("Game", session.tag));
-        memo.add(session.logKills("Total Kills", session.totalKills, session.totalKillsByWorld, session.totalKillsByPlayer));
-        memo.add(session.logContent("Players", session.players.txt));
 
-        GetRankingKills(session);
+        if (parser.show.ResumeGame)
+            GetResumeGame(session, details);
 
-        GetRankingCauses(session);
+        if (parser.show.RankingKills)
+            GetRankingKills(session, details);
+
+        if (parser.show.RankingCauses)
+            GetRankingCauses(session, details);
 
     }
 
-    private void GetRankingKills(ParserSession session)
+    private void GetResumeGame(ParserSession session, bool details)
+    {
+        var title = "Total Kills";
+        var logKill = "";
+        
+        if (details)
+            logKill = session.logKillsDetails(title, session.totalKills, session.totalKillsByWorld, session.totalKillsByPlayer);
+        else
+                logKill = session.logKills("Total Kills", session.totalKills);
+        
+        memo.add(logKill);
+        memo.add(session.logContent("Players", session.players.txt));
+
+    }
+
+    private void GetRankingKills(ParserSession session, bool details)
     {
 
         memo.add(session.logGroup("Score by Kills"));
@@ -56,28 +76,48 @@ public class ParserOutput
             var name = player.name;
 
             var score = session.totalScore(name);
-            var scoreKills = session.totalScoreKills(name);
-            var scoreDeadByWorld = session.totalScoreDeadByWorld(name);
-            var scoreDeadByPlayer = session.totalScoreDeadByPlayer(name);
 
-            memo.add(session.logScorePlayer(name, score, scoreKills, scoreDeadByWorld, scoreDeadByPlayer));
+            var log = "";
+
+            if (details)
+            {
+                var scoreKills = session.totalScoreKills(name);
+                var scoreDeadByWorld = session.totalScoreDeadByWorld(name);
+                var scoreDeadByPlayer = session.totalScoreDeadByPlayer(name);
+
+                log = session.logScorePlayerDetails(name, score, scoreKills, scoreDeadByWorld, scoreDeadByPlayer);
+            }
+            else 
+                log = session.logScorePlayer(name, score);
+             
+            memo.add(log);
         }
     }
 
-    private void GetRankingCauses(ParserSession session)
+    private void GetRankingCauses(ParserSession session, bool details)
     {
        
-        memo.add(session.logGroup("Cause of Death"));
+        memo.add(session.logGroup("Causes of Death"));
         
         foreach (CauseDeath cause in session.rankingCauses)
         {
             var name = cause.name;
 
             var score = session.totalScoreCause(name);
-            var scoreByWorld = session.totalScoreCauseByWorld(name);
-            var scoreByPlayer = session.totalScoreCauseByPlayer(name);
 
-            memo.add(session.logScoreCause(name, score, scoreByWorld, scoreByPlayer));
+            var log = "";
+
+            if (details)
+            {
+                var scoreByWorld = session.totalScoreCauseByWorld(name);
+                var scoreByPlayer = session.totalScoreCauseByPlayer(name);
+
+                log = session.logScoreCauseDetails(name, score, scoreByWorld, scoreByPlayer);         
+            }
+            else
+                log = session.logScoreCause(name, score);
+
+            memo.add(log);
         }
 
     }        

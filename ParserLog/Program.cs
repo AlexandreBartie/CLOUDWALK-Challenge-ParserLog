@@ -43,10 +43,13 @@ class StartApp
 
     public StartApp()
     {
-        parser.show.PlayerStatistics = false;
-        parser.show.CreatureStatistics = true;
-        parser.show.LootedItems = false;
-        parser.show.CreatureSpotlight = true; // Extra Challenge
+
+        parser.show.KillDetails = true;
+
+        parser.show.ResumeGame = true;
+        parser.show.RankingKills = true;
+        parser.show.RankingCauses = true; // Extra Challenge
+
     }
 
     public void Run(string fileName, string creatureRules)

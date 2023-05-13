@@ -26,7 +26,7 @@ public class ViewDashBoard : ViewFormat
 
     public ListPlayer rankingKills => score.rankingPlayer.GetRanking();
     public ListCauseDeath rankingCauses => score.rankingCause.GetRanking();
-    
+
     public ListPlayer players => score.GetListPlayer();
     public ListCauseDeath causes => score.GetListCause();
 
@@ -47,12 +47,12 @@ public class ViewDashBoard : ViewFormat
 
 public class ViewScore : ViewDataRanking
 {
-      
+
     public int GetTotalKills() => GetTotalKillsByWorld() + GetTotalKillsByPlayer();
     public int GetTotalKillsByWorld() => view.worldKill.count;
     public int GetTotalKillsByPlayer() => view.playerKill.count;
 
-    public ViewScore(ViewDashBoard view) : base(view) {}
+    public ViewScore(ViewDashBoard view) : base(view) { }
 
     public ListPlayer GetListPlayer()
     {

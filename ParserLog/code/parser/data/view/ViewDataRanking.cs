@@ -12,7 +12,7 @@ public class ViewDataRanking
 
     public int GetScore(string player) => GetScoreKills(player) - GetScoreDeadByWorld(player);
     public int GetScoreKills(string player) => view.playerKill.FilterByWhoKill(player).count;
-    
+
     public int GetScoreDeads(string player) => GetScoreDeadByWorld(player) + GetScoreDeadByPlayer(player);
     public int GetScoreDeadByWorld(string player) => view.worldKill.FilterByWhoDied(player).count;
     public int GetScoreDeadByPlayer(string player) => view.playerKill.FilterByWhoDied(player).count;
@@ -23,7 +23,7 @@ public class ViewDataRanking
 
     public ViewDataRanking(ViewDashBoard view)
     {
-        
+
         this.view = view;
 
         rankingPlayer = new ViewRankingPlayer(this);
@@ -34,7 +34,7 @@ public class ViewDataRanking
 
 public class ViewRankingPlayer
 {
-    
+
     private ViewDataRanking ranking;
 
     public ViewRankingPlayer(ViewDataRanking ranking)
@@ -52,14 +52,14 @@ public class ViewRankingPlayer
 
             foreach (Player item in rank)
             {
-                
+
                 if (IsBetterThan(player.name, item.name))
                 {
                     rank.Insert(index, player);
                     break;
                 }
 
-                index ++;
+                index++;
 
             }
 
@@ -77,9 +77,9 @@ public class ViewRankingPlayer
         return IsBetterThan_ByScore(playerNew, playerOld);
     }
 
-    private bool IsBetterThan_ByScore(string playerNew, string playerOld)   
+    private bool IsBetterThan_ByScore(string playerNew, string playerOld)
     {
-    
+
         var scoreNew = ranking.GetScore(playerNew);
         var scoreOld = ranking.GetScore(playerOld);
 
@@ -92,9 +92,9 @@ public class ViewRankingPlayer
         return false;
     }
 
-    private bool IsBetterThan_ByScoreKills(string playerNew, string playerOld)   
+    private bool IsBetterThan_ByScoreKills(string playerNew, string playerOld)
     {
-    
+
         var scoreNew = ranking.GetScoreKills(playerNew);
         var scoreOld = ranking.GetScoreKills(playerOld);
 
@@ -107,9 +107,9 @@ public class ViewRankingPlayer
         return false;
     }
 
-    private bool IsBetterThan_ByScoreDeads(string playerNew, string playerOld)   
+    private bool IsBetterThan_ByScoreDeads(string playerNew, string playerOld)
     {
-    
+
         var scoreNew = ranking.GetScoreDeads(playerNew);
         var scoreOld = ranking.GetScoreDeads(playerOld);
 
@@ -120,7 +120,7 @@ public class ViewRankingPlayer
 }
 public class ViewRankingCause
 {
-    
+
     private ViewDataRanking ranking;
 
     public ViewRankingCause(ViewDataRanking ranking)
@@ -138,14 +138,14 @@ public class ViewRankingCause
 
             foreach (CauseDeath item in rank)
             {
-                
+
                 if (IsBiggerThan(cause.name, item.name))
                 {
                     rank.Insert(index, cause);
                     break;
                 }
 
-                index ++;
+                index++;
 
             }
 
@@ -161,10 +161,10 @@ public class ViewRankingCause
 
     private bool IsBiggerThan(string causeNew, string causeOld)
     {
-        
+
         var scoreNew = ranking.GetScoreCauses(causeNew);
         var scoreOld = ranking.GetScoreCauses(causeOld);
-        
+
         return (scoreNew > scoreOld);
     }
 
