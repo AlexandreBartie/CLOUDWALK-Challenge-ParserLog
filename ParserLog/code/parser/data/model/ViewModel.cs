@@ -9,11 +9,11 @@ public abstract class ViewModel
 
     public int count => logs.Count;
 
-    public readonly ViewData view;
+    public readonly ViewDashBoard view;
 
     public readonly LogType type;
 
-    public ViewModel(ViewData view, LogType type)
+    public ViewModel(ViewDashBoard view, LogType type)
     {
         this.view = view;
 

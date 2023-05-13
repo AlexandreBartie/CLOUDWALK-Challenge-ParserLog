@@ -3,12 +3,12 @@ using parser.data.view;
 
 namespace parser;
 
-public class ParserSession : ViewData
+public class ParserSession : ViewDashBoard
 {
     public int order;
 
     public string tag => "Game#${order}";
-    public ParserSession() : base(new LogList()) {}
+    public ParserSession() : base(new LogList()) { }
 
     public void SetOrder(int order)
     { this.order = order; }
@@ -28,12 +28,10 @@ public class ParserSessions : List<ParserSession>
     public ParserSession GetSession(int index)
     {
         if (this.Count >= index)
-            return this[index-1];
+            return this[index - 1];
 
         return new ParserSession();
     }
-
-
 
     public void Populate(string[] lines)
     {
@@ -56,6 +54,8 @@ public class ParserSessions : List<ParserSession>
 
         }
 
+        current = this.First();
+
     }
 
     private void addSession()
@@ -63,7 +63,7 @@ public class ParserSessions : List<ParserSession>
         Add(new ParserSession());
 
         current = this.Last();
-        
+
         current.SetOrder(Count);
 
     }

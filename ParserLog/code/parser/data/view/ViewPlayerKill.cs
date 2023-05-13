@@ -7,7 +7,7 @@ namespace parser.data.view;
 
 public class ViewPlayerKill : ViewModel
 {
-    public ViewPlayerKill(ViewData view) : base(view, LogType.eLogPlayerKill) { }
+    public ViewPlayerKill(ViewDashBoard view) : base(view, LogType.eLogPlayerKill) { }
 
     public ListPlayer players => GetListPlayer();
     public ListCauseDeath causes => GetListCause();

@@ -24,7 +24,7 @@ public class ViewFormat : ViewFormatSpotLight
 
     public string logBottom(string title)
     {
-        return logBlock(title, false, true);
+        return logBlock(title, true, true);
     }
     private string logBlock(string title, bool top, bool bottom)
     {
@@ -32,10 +32,10 @@ public class ViewFormat : ViewFormatSpotLight
 
         char markTop; char markBottom;
 
-        if (top)
-        { markTop = '='; markBottom = '-'; }
-        else
-        { markTop = '-'; markBottom = '='; }
+        if (bottom)
+            { markTop = '-'; markBottom = '='; }
+        else       
+            { markTop = '='; markBottom = '-'; }
 
         if (top)
             memo.add(logLine(markTop));

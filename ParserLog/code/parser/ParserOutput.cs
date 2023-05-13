@@ -1,4 +1,5 @@
 using lib;
+using parser.data.list;
 
 namespace parser;
 
@@ -24,7 +25,7 @@ public class ParserOutput
         foreach (ParserSession session in sessions)
             memo.add(getSessionTXT(session));
 
-        memo.add(parser.session.logEnd("Statistics based by file log extracted"));
+        memo.add(parser.session.logBottom("Statistics based by file log extracted"));
 
         return (memo.txt);
 
@@ -35,17 +36,18 @@ public class ParserOutput
         var memo = new Memo();
 
         memo.add(parser.session.logLine());
-        memo.add($"Game: {session.order}");
-        memo.add($"Total Kills: {session.totalKills}");
-        memo.add($"  - byWorld: {session.WorldKill.count}");
-        memo.add($" - byPlayer: {session.PlayerKill.count}");
+        memo.add($"Game: #{session.order}");
+        memo.add($"Total Kills: {session.totalKills} -byWorld: {session.WorldKill.count} -byPlayer: {session.PlayerKill.count}");
         memo.add($"    Players: {session.players.txt}");
-        memo.add($"    Players: {session.players.txt}");
-        memo.add(parser.session.logLine());
+        memo.add($"      Score:");
+        memo.add($"      Score: {session.players.txt}");
+
+        foreach (Player player in session.players)
+            memo.add($"           {player.name}: 100 -byWorld: {session.WorldKill.count} -byPlayer: {session.PlayerKill.count}");
+
 
         if (show.PlayerStatistics)
         {
-
             // memo.add(parser.PlayerKill.log("Kills"));
 
         }

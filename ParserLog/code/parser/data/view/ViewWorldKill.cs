@@ -12,7 +12,7 @@ public class ViewWorldKill : ViewModel
 
     public int totalDeaths => logs.Count;
 
-    public ViewWorldKill(ViewData view) : base(view, LogType.eLogWorldKill) { }
+    public ViewWorldKill(ViewDashBoard view) : base(view, LogType.eLogWorldKill) { }
 
     public LogList FilterByWhoDied(string player)
     {
