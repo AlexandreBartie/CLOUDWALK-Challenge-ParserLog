@@ -20,6 +20,7 @@ public class ViewDashBoard : ViewFormat
     public int totalScoreDeadByWorld(string player) => score.GetScoreDeadByWorld(player);
     public int totalScoreDeadByPlayer(string player) => score.GetScoreDeadByPlayer(player);
 
+    public ListPlayer ranking => score.GetListRanking();
     public ListPlayer players => score.GetListPlayer();
     public ListCauseDeath causes => score.GetListCause();
 
@@ -38,18 +39,14 @@ public class ViewDashBoard : ViewFormat
 
 }
 
-public class ViewScore
+public class ViewScore : ViewRanking
 {
-    private ViewDashBoard view;
-    
+      
     public int GetTotalKills() => GetTotalKillsByWorld() + GetTotalKillsByPlayer();
     public int GetTotalKillsByWorld() => view.worldKill.count;
     public int GetTotalKillsByPlayer() => view.playerKill.count;
 
-    public ViewScore(ViewDashBoard view)
-    {
-        this.view = view;
-    }
+    public ViewScore(ViewDashBoard view) : base(view) {}
 
     public ListPlayer GetListPlayer()
     {
@@ -75,9 +72,101 @@ public class ViewScore
 
     }
 
+}
+
+public class ViewRanking
+{
+
+    protected ViewDashBoard view;
+
     public int GetScore(string player) => GetScoreKills(player) - GetScoreDeadByWorld(player);
     public int GetScoreKills(string player) => view.playerKill.FilterByWhoKill(player).count;
+    
+    public int GetScoreDeads(string player) => GetScoreDeadByWorld(player) + GetScoreDeadByPlayer(player);
     public int GetScoreDeadByWorld(string player) => view.worldKill.FilterByWhoDied(player).count;
     public int GetScoreDeadByPlayer(string player) => view.playerKill.FilterByWhoDied(player).count;
+
+    public ViewRanking(ViewDashBoard view)
+    {
+        this.view = view;
+    }
+
+    public ListPlayer GetListRanking()
+    {
+
+        var rank = new ListPlayer();
+
+        foreach (Player player in view.players.order)
+        {
+
+            int index = 0;
+
+            foreach (Player item in rank)
+            {
+                
+                if (IsBetterThan(player.name, item.name))
+                {
+                    rank.Insert(index, player);
+                    break;
+                }
+
+                index ++;
+
+            }
+
+            // Represents that player not added in Rank list
+            if (rank.Count == index)
+                rank.Add(player);
+
+        }
+
+        return rank;
+
+    }
+
+    private bool IsBetterThan(string playerNew, string playerOld)
+    {
+        return IsBetterThan_ByScore(playerNew, playerOld);
+    }
+
+    private bool IsBetterThan_ByScore(string playerNew, string playerOld)   
+    {
+    
+        var scoreNew = GetScore(playerNew);
+        var scoreOld = GetScore(playerOld);
+
+        if (scoreNew > scoreOld)
+            return true;
+
+        if (scoreNew == scoreOld)
+            return IsBetterThan_ByScoreKills(playerNew, playerOld);
+
+        return false;
+    }
+
+    private bool IsBetterThan_ByScoreKills(string playerNew, string playerOld)   
+    {
+    
+        var scoreNew = GetScoreKills(playerNew);
+        var scoreOld = GetScoreKills(playerOld);
+
+        if (scoreNew > scoreOld)
+            return true;
+
+        if (scoreNew == scoreOld)
+            return IsBetterThan_ByScoreDeads(playerNew, playerOld);
+
+        return false;
+    }
+
+    private bool IsBetterThan_ByScoreDeads(string playerNew, string playerOld)   
+    {
+    
+        var scoreNew = GetScoreDeads(playerNew);
+        var scoreOld = GetScoreDeads(playerOld);
+
+        return (scoreNew < scoreOld);
+
+    }
 
 }

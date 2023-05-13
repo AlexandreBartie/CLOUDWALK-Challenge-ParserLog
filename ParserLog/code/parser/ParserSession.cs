@@ -7,7 +7,7 @@ public class ParserSession : ViewDashBoard
 {
     public int order;
 
-    public string tag => "Game#${order}";
+    public string tag => $"#{order}";
     public ParserSession() : base(new LogList()) { }
 
     public void SetOrder(int order)

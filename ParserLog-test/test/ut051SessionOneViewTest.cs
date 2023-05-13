@@ -37,5 +37,16 @@ public class UT051_SessionOneViewTest
 
     }
 
+    [Theory]
+    [InlineData("Zeh, Isgalamido, Dono da Bola, Assasinu Credi")]
+    public void TST03_SessionOneViewTest_RankingKills(string ranking)
+    {
+
+        parser.LoadFile(input);
+
+        Assert.Equal(ranking, parser.session.ranking.raw);
+
+    }
+
 
 }

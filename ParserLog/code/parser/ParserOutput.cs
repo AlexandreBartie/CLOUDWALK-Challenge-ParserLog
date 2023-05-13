@@ -35,13 +35,13 @@ public class ParserOutput
 
         var memo = new Memo();
 
-        memo.add(parser.session.logLine());
-        memo.add($"Game: #{session.order}");
-        memo.add($"Total Kills: {session.totalKills} -byWorld: {session.totalKillsByWorld} -byPlayer: {session.totalKillsByPlayer}");
-        memo.add($"    Players: {session.players.txt}");
-        memo.add($"      Kills:");
+        memo.add(session.logLine());
+        memo.add(session.logContent("Game", session.tag));
+        memo.add(session.logKills("Total Kills", session.totalKills, session.totalKillsByWorld, session.totalKillsByPlayer));
+        memo.add(session.logContent("Players", session.players.txt));
+        memo.add(session.logContent("Score"));
 
-        foreach (Player player in session.players)
+        foreach (Player player in session.ranking)
         {
             var name = player.name;
 
@@ -50,7 +50,7 @@ public class ParserOutput
             var scoreDeadByWorld = session.totalScoreDeadByWorld(name);
             var scoreDeadByPlayer = session.totalScoreDeadByPlayer(name);
 
-            memo.add(session.GetLogScorePlayer(name, score, scoreKills, scoreDeadByWorld, scoreDeadByPlayer));
+            memo.add(session.logScorePlayer(name, score, scoreKills, scoreDeadByWorld, scoreDeadByPlayer));
         }
 
 

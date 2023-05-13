@@ -4,7 +4,11 @@ namespace parser.data.list;
 
 public abstract class ListEntity<T> : List<T> where T : Entity
 {
-    public string txt => string.Join(", ", this.OrderBy(item => item.name));
+    
+    public string txt => string.Join(", ", order);
+    public string raw => string.Join(", ", this);
+
+    public IOrderedEnumerable<T> order => this.OrderBy(item => item.name);
 
     public void AddList(List<T> list)
     {
