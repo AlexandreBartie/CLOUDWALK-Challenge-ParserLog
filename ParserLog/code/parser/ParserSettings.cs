@@ -31,7 +31,7 @@ public class ParserShow
     public bool RankingKills = true;
     public bool RankingCauses = true;
 
-    public bool KillDetails = true;
+    public bool ViewDetails = true;
 }
 
     public class ParserSettingsData 

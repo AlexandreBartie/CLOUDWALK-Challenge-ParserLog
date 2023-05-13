@@ -1,13 +1,13 @@
 using lib;
 using parser.core.log;
 using parser.data.list;
-using parser.data.model;
+using parser.data.panel;
 
 namespace parser.data.view;
 
-public class ViewPlayerKill : ViewModel
+public class ViewPlayerKill : PanelView
 {
-    public ViewPlayerKill(ViewDashBoard view) : base(view, LogType.eLogPlayerKill) { }
+    public ViewPlayerKill(PanelData view) : base(view, LogType.eLogPlayerKill) { }
 
     public ListPlayer players => GetListPlayer();
     public ListCauseDeath causes => GetListCause();

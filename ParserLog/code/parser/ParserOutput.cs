@@ -35,10 +35,10 @@ public class ParserOutput
     private void GetSession(ParserSession session)
     {
 
-        var details = parser.show.KillDetails;
+        var details = parser.show.ViewDetails;
 
         memo.add(session.logLine('='));
-        memo.add(session.logContent("Game", session.tag));
+        memo.add(session.logContent("Match", session.tag));
 
         if (parser.show.ResumeGame)
             GetResumeGame(session, details);
@@ -69,7 +69,7 @@ public class ParserOutput
     private void GetRankingKills(ParserSession session, bool details)
     {
 
-        memo.add(session.logGroup("Score by Kills"));
+        memo.add(session.logGroup("Kills Score"));
 
         foreach (Player player in session.rankingKills)
         {
@@ -97,7 +97,7 @@ public class ParserOutput
     private void GetRankingCauses(ParserSession session, bool details)
     {
        
-        memo.add(session.logGroup("Causes of Death"));
+        memo.add(session.logGroup("Death Cause"));
         
         foreach (CauseDeath cause in session.rankingCauses)
         {

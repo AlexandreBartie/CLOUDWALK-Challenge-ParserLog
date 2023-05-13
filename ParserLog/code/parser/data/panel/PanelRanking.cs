@@ -1,14 +1,14 @@
 using parser.data.list;
 
-namespace parser.data.view;
+namespace parser.data.panel;
 
-public class ViewDataRanking
+public class PanelRanking
 {
 
-    public ViewDashBoard view;
+    public PanelData view;
 
-    public ViewRankingPlayer rankingPlayer;
-    public ViewRankingCause rankingCause;
+    public PanelRankingPlayer rankingPlayer;
+    public PanelRankingCause rankingCause;
 
     public int GetScore(string player) => GetScoreKills(player) - GetScoreDeadByWorld(player);
     public int GetScoreKills(string player) => view.playerKill.FilterByWhoKill(player).count;
@@ -21,23 +21,23 @@ public class ViewDataRanking
     public int GetCausesByWorld(string cause) => view.worldKill.FilterByHowDied(cause).count;
     public int GetCausesByPlayer(string cause) => view.playerKill.FilterByHowDied(cause).count;
 
-    public ViewDataRanking(ViewDashBoard view)
+    public PanelRanking(PanelData view)
     {
 
         this.view = view;
 
-        rankingPlayer = new ViewRankingPlayer(this);
-        rankingCause = new ViewRankingCause(this);
+        rankingPlayer = new PanelRankingPlayer(this);
+        rankingCause = new PanelRankingCause(this);
     }
 
 }
 
-public class ViewRankingPlayer
+public class PanelRankingPlayer
 {
 
-    private ViewDataRanking ranking;
+    private PanelRanking ranking;
 
-    public ViewRankingPlayer(ViewDataRanking ranking)
+    public PanelRankingPlayer(PanelRanking ranking)
     { this.ranking = ranking; }
 
     public ListPlayer GetRanking()
@@ -118,12 +118,12 @@ public class ViewRankingPlayer
     }
 
 }
-public class ViewRankingCause
+public class PanelRankingCause
 {
 
-    private ViewDataRanking ranking;
+    private PanelRanking ranking;
 
-    public ViewRankingCause(ViewDataRanking ranking)
+    public PanelRankingCause(PanelRanking ranking)
     { this.ranking = ranking; }
 
     public ListCauseDeath GetRanking()

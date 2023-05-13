@@ -1,9 +1,9 @@
 using parser.core.log;
-using parser.data.view;
+using parser.data.panel;
 
 namespace parser;
 
-public class ParserSession : ViewDashBoard
+public class ParserSession : PanelData
 {
     public int order;
 

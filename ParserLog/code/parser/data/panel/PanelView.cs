@@ -1,19 +1,19 @@
 using parser.core.log;
 using parser.data.view;
 
-namespace parser.data.model;
+namespace parser.data.panel;
 
-public abstract class ViewModel
+public abstract class PanelView
 {
     public LogList logs => view.logs.filter(type);
 
     public int count => logs.Count;
 
-    public readonly ViewDashBoard view;
+    public readonly PanelData view;
 
     public readonly LogType type;
 
-    public ViewModel(ViewDashBoard view, LogType type)
+    public PanelView(PanelData view, LogType type)
     {
         this.view = view;
 

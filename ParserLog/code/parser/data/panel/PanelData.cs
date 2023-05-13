@@ -1,15 +1,15 @@
 using parser.core.log;
 using parser.data.list;
-using parser.data.model;
+using parser.data.view;
 
-namespace parser.data.view;
+namespace parser.data.panel;
 
-public class ViewDashBoard : ViewFormat
+public class PanelData : PanelFormat
 {
     public readonly ViewWorldKill worldKill;
     public readonly ViewPlayerKill playerKill;
 
-    private ViewScore score;
+    private PanelScore score;
 
     public int totalKills => score.GetTotalKills();
     public int totalKillsByWorld => score.GetTotalKillsByWorld();
@@ -32,27 +32,27 @@ public class ViewDashBoard : ViewFormat
 
     public readonly LogList logs;
 
-    public ViewDashBoard(LogList logs)
+    public PanelData(LogList logs)
     {
         this.logs = logs;
 
         worldKill = new ViewWorldKill(this);
         playerKill = new ViewPlayerKill(this);
 
-        score = new ViewScore(this);
+        score = new PanelScore(this);
 
     }
 
 }
 
-public class ViewScore : ViewDataRanking
+public class PanelScore : PanelRanking
 {
 
     public int GetTotalKills() => GetTotalKillsByWorld() + GetTotalKillsByPlayer();
     public int GetTotalKillsByWorld() => view.worldKill.count;
     public int GetTotalKillsByPlayer() => view.playerKill.count;
 
-    public ViewScore(ViewDashBoard view) : base(view) { }
+    public PanelScore(PanelData view) : base(view) { }
 
     public ListPlayer GetListPlayer()
     {

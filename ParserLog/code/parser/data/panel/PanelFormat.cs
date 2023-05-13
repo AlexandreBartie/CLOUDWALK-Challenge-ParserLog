@@ -1,8 +1,8 @@
 using lib;
 
-namespace parser.data.model;
+namespace parser.data.panel;
 
-public class ViewFormat
+public class PanelFormat
 {
     private const int SIZE_LINE = 90;
     private const int COLUMN_LABEL = 20;
@@ -91,7 +91,7 @@ public class ViewFormat
 
     public string logScorePlayerDetails(string player, int score, int scoreKills, int scoreDeadByWorld, int scoreDeadByPlayer)
     {
-        
+
         var logScoreKills = FormatTupla(scoreKills, "kills");
         var logScoreDeadByWorld = FormatTupla(scoreDeadByWorld, "byWorld");
         var logScoreDeadByPlayer = FormatTupla(scoreDeadByPlayer, "byPlayer");
@@ -115,10 +115,10 @@ public class ViewFormat
     public string logScoreCauseDetails(string cause, int score, int scoreByWorld, int scoreByPlayer)
     {
         var type = "";
-        
+
         if (scoreByWorld != 0)
             type = "byWorld";
-        
+
         if (scoreByPlayer != 0)
             type = "byPlayer";
 

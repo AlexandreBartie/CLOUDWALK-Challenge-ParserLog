@@ -43,7 +43,7 @@ class StartApp
     public StartApp()
     {
 
-        parser.show.KillDetails = true;
+        parser.show.ViewDetails = true;
 
         parser.show.ResumeGame = true;
         parser.show.RankingKills = true;

@@ -1,18 +1,18 @@
 using lib;
 using parser.data.list;
 using parser.core.log;
-using parser.data.model;
+using parser.data.panel;
 
 namespace parser.data.view;
 
-public class ViewWorldKill : ViewModel
+public class ViewWorldKill : PanelView
 {
     public ListPlayer players => GetListPlayer();
     public ListCauseDeath causes => GetListCause();
 
     public int totalDeaths => logs.Count;
 
-    public ViewWorldKill(ViewDashBoard view) : base(view, LogType.eLogWorldKill) { }
+    public ViewWorldKill(PanelData view) : base(view, LogType.eLogWorldKill) { }
 
     public LogList FilterByWhoDied(string player)
     {
