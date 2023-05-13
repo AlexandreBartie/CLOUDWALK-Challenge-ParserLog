@@ -71,9 +71,4 @@ public class ViewWorldKill : ViewModel
 
     }
 
-    public override string log(string label)
-    {
-        return view.GetLogPoints(label, 0, count);
-    }
-
 }

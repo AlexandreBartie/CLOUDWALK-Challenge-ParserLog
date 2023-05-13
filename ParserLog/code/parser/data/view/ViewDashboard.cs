@@ -17,7 +17,8 @@ public class ViewDashBoard : ViewFormat
 
     public int totalScore(string player) => score.GetScore(player);
     public int totalScoreKills(string player) => score.GetScoreKills(player);
-    public int totalScoreKilled(string player) => score.GetScoreKilled(player);
+    public int totalScoreDeadByWorld(string player) => score.GetScoreDeadByWorld(player);
+    public int totalScoreDeadByPlayer(string player) => score.GetScoreDeadByPlayer(player);
 
     public ListPlayer players => score.GetListPlayer();
     public ListCauseDeath causes => score.GetListCause();
@@ -74,10 +75,9 @@ public class ViewScore
 
     }
 
-    public int GetScore(string player)
-    { return GetScoreKills(player) - GetScoreKilled(player); }
+    public int GetScore(string player) => GetScoreKills(player) - GetScoreDeadByWorld(player);
     public int GetScoreKills(string player) => view.playerKill.FilterByWhoKill(player).count;
-    public int GetScoreKilled(string player)
-    { return view.worldKill.FilterByWhoDied(player).count + view.playerKill.FilterByWhoDied(player).count; }
+    public int GetScoreDeadByWorld(string player) => view.worldKill.FilterByWhoDied(player).count;
+    public int GetScoreDeadByPlayer(string player) => view.playerKill.FilterByWhoDied(player).count;
 
 }

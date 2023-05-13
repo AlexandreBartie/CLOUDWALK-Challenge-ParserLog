@@ -20,19 +20,20 @@ public class UT051_SessionOneViewTest
     }
 
     [Theory]
-    [InlineData("Assasinu Credi", 10, 5, 2)]
-    [InlineData("Dono da Bola", 10, 5, 2)]
-    [InlineData("Isgalamido", 10, 5, 2)]
-    [InlineData("Zeh", 10, 5, 2)]
-    [InlineData("Mocinha", 10, 5, 2)]
-    public void TST02_SessionOneViewTest_Score(string player, int score, int kills, int deaths)
+    [InlineData("Assasinu Credi", 13, 16, 3, 21)]
+    [InlineData("Dono da Bola", 13, 20, 7, 24)]
+    [InlineData("Isgalamido", 19, 27, 8, 15)]
+    [InlineData("Zeh", 20, 22, 2, 25)]
+    [InlineData("Mocinha", 0, 0, 0, 0)]
+    public void TST02_SessionOneViewTest_Score(string player, int score, int kills, int deathsByWorld, int deathsByPlayer)
     {
 
         parser.LoadFile(input);
 
         Assert.Equal(score, parser.session.totalScore(player));
         Assert.Equal(kills, parser.session.totalScoreKills(player));
-        Assert.Equal(deaths, parser.session.totalScoreKilled(player));
+        Assert.Equal(deathsByWorld, parser.session.totalScoreDeadByWorld(player));
+        Assert.Equal(deathsByPlayer, parser.session.totalScoreDeadByPlayer(player));
 
     }
 

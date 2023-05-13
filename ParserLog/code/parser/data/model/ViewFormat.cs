@@ -4,7 +4,7 @@ namespace parser.data.model;
 
 public class ViewFormat : ViewFormatSpotLight
 {
-    private const int SIZE_LINE = 60;
+    private const int SIZE_LINE = 80;
     private const int COLUMN_LABEL = 25;
 
     private const int COLUMN_VALUE = 10;
@@ -12,8 +12,9 @@ public class ViewFormat : ViewFormatSpotLight
     private const int COLUMN_COUNT = 5;
 
     private const string LABEL_POINTS = "points";
-    private const string LABEL_ITEMS = "items";
-
+    private const string LABEL_KILLS = "kills";
+    private const string LABEL_DEAD_BY_WORLD = "deadByWorld";
+    private const string LABEL_DEAD_BY_PLAYER = "deadByPlayer";
     public string logTitle(string title, string subTitle = "")
     {
         if (subTitle != "")
@@ -53,25 +54,21 @@ public class ViewFormat : ViewFormatSpotLight
         return Text.Repeat(mark, SIZE_LINE);
     }
 
-    public string GetLogPoints(string title, int value, int count, int tab = 1)
+    public string GetLogScorePlayer(string player, int score, int scoreKills, int scoreDeadByWorld, int scoreDeadByPlayer)
     {
-        return GetLog(title, value, count, LABEL_POINTS, tab);
+        var logScore = FormatTupla(score, "points");
+        var logScoreKills = FormatTupla(scoreKills, "kills");
+        var logScoreDeadByWorld = FormatTupla(scoreDeadByWorld, "deadByWorld");
+        var logScoreDeadByPlayer = FormatTupla(scoreDeadByPlayer, "deadByPlayer");
+
+        return $"{FormatLabel(player)}: {logScore} [{logScoreKills} {logScoreDeadByWorld} {logScoreDeadByPlayer}]";
     }
 
-    public string GetLogList(string item, int value, int count, int tab = 1)
-    {
-        return GetLog(item, value, count, LABEL_ITEMS, tab);
-    }
-
-    private string GetLog(string label, int value, int count, string unit, int level)
-    {
-        return $"{FormatLabel(label, level)} {FormatValue(value)} {FormatUnit(unit)} {FormatCount(count)}#";
-    }
-
-    private string FormatLabel(string label, int level) => Text.TabLevel(label.PadRight(COLUMN_LABEL), level, 3);
-    private string FormatUnit(string unit) => unit.PadRight(COLUMN_UNIT);
+    private string FormatLabel(string label) => label.PadRight(COLUMN_LABEL);
+    private string FormatTupla(int value, string unit) => $"{FormatValue(value)} {unit}";
     private string FormatValue(int value) => value.ToString(FORMAT_NUMBER).PadLeft(COLUMN_VALUE);
     private string FormatCount(int count) => count.ToString(FORMAT_NUMBER).PadLeft(COLUMN_COUNT);
+
 
 }
 

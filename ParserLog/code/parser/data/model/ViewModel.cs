@@ -19,7 +19,4 @@ public abstract class ViewModel
 
         this.type = type;
     }
-
-    public abstract string log(string label);
-
 }
