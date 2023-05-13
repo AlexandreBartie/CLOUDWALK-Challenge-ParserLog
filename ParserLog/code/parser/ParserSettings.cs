@@ -8,7 +8,7 @@ public class ParserSettings : ParserSettingsData
     public string GetInputFileFolder(string path)
     {
         if (path == "")
-            path = fileFolder;
+            path = GetFileFolder();
 
         return path + "input/"; ;
     }
@@ -16,7 +16,7 @@ public class ParserSettings : ParserSettingsData
     public string GetOutputFileFolder(string path)
     {
         if (path == "")
-            path = fileFolder;
+            path = GetFileFolder();
 
         return path + "output/";
     }
@@ -39,19 +39,29 @@ public class ParserSettingsData
 
     private string _fileFolder = "";
 
-    public string FileFolder
+    public void SetFileFolder(string path)
     {
-        get
-        {
-            if (_fileFolder == "")
-                _fileFolder = AppDomain.CurrentDomain.BaseDirectory;
+        _fileFolder = path;
+    }
 
-            return _fileFolder;
-        }
-        set
-        {
-            _fileFolder = value;
-        }
+    public string GetFileFolder()
+    {
+        if (_fileFolder == "")
+{
+#if DEBUG
+
+            _fileFolder = "C:/DEVOPS/CHALLENGE/CLOUDWALK/Challenge-ParserLog/file/";
+
+#else
+
+            _fileFolder = AppDomain.CurrentDomain.BaseDirectory;
+
+#endif
+}
+
+
+
+        return _fileFolder;
     }
 
 }
